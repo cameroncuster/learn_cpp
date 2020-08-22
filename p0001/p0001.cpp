@@ -5,6 +5,6 @@ using namespace std;
 
 int main()
 {
-    cout << "Hello Gitlab!" << endl;
+    cout << "Hello Gitlab!!" << endl;
     return 0;
 }
