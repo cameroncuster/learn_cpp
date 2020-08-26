@@ -8,10 +8,8 @@ enum networkType { INVALID, CLASSA, APRIVATE, LOCALHOST, CLASSB, BPRIVATE, CLASS
 typedef unsigned short int octet;
 typedef unsigned int ip;
 
-// Three functions
-ip compressOctets(octet octet0, octet octet1, octet octet2, octet octet3) {
-    // form valid internet protocol address below
-    
-}
+// Three function prototypes
+ip compressOctets(octet, octet, octet, octet);
+void extractOctets(ip, octet &, octet &, octet &, octet &);
 
 #endif
