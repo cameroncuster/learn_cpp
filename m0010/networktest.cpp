@@ -23,7 +23,7 @@ TEST_CASE("compressOctets - testing a classa ip address")
     octet octet3 = 255;
 
     ip ipAddress = compressOctets(octet0, octet1, octet2, octet3);
-    CHECK(2130716431 == ipAddress);
+    CHECK(2130706431 == ipAddress);
 
 }
 /*
