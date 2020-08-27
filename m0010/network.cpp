@@ -60,6 +60,6 @@ networkType getNetworkType(ip ipAddress) {
         return CLASSD;
     }
     else if (octet0 >= 240 && octet0 <= 255) {
-        return CLASSE;
+        return CLASSE; 
     }
 }
