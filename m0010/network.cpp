@@ -56,7 +56,7 @@ networkType getNetworkType(ip ipAddress) {
         }
         return CLASSC;
     }
-    else if (octet0 >= 224 && octet0 >= 239) {
+    else if (octet0 >= 224 && octet0 <= 239) {
         return CLASSD;
     }
     else if (octet0 >= 240 && octet0 <= 255) {

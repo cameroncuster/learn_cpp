@@ -180,3 +180,53 @@ TEST_CASE("getNetworkType - classifying example networks including private") {
 
     //Add two tests from each class not including the example
 }
+
+TEST_CASE("getNetworkType - classifying CLASSA and APRIVATE networks") {
+    ip ipAddress = compressOctets(126, 255, 255, 255);
+    networkType classified = getNetworkType(ipAddress);
+    CHECK(CLASSA == classified);
+
+    ipAddress = compressOctets(10, 0, 0, 0);
+    classified = getNetworkType(ipAddress);
+    CHECK(APRIVATE == classified);
+}
+
+TEST_CASE("getNetworkType - classifying CLASSB and BPRIVATE networks") {
+    ip ipAddress = compressOctets(128, 0, 0, 0);
+    networkType classified = getNetworkType(ipAddress);
+    CHECK(CLASSB == classified);
+
+    ipAddress = compressOctets(172, 16, 255, 255);
+    classified = getNetworkType(ipAddress);
+    CHECK(BPRIVATE == classified);
+}
+
+TEST_CASE("getNetworkType - classifying CLASSC and CPRIVATE networks") {
+    ip ipAddress = compressOctets(192, 255, 255, 255);
+    networkType classified = getNetworkType(ipAddress);
+    CHECK(CLASSC == classified);
+
+    ipAddress = compressOctets(192, 168, 0, 0);
+    classified = getNetworkType(ipAddress);
+    CHECK(CPRIVATE == classified);
+}
+
+TEST_CASE("getNetworkType - classifying CLASSD and INVALID networks") {
+    ip ipAddress = compressOctets(224, 0, 0, 0);
+    networkType classified = getNetworkType(ipAddress);
+    CHECK(CLASSD == classified);
+
+    ipAddress = compressOctets(0, 255, 255, 255);
+    classified = getNetworkType(ipAddress);
+    CHECK(INVALID == classified);
+}
+
+TEST_CASE("getNetworkType - classifying CLASSE and LOCALHOST networks") {
+    ip ipAddress = compressOctets(255, 255, 255, 255);
+    networkType classified = getNetworkType(ipAddress);
+    CHECK(CLASSE == classified);
+
+    ipAddress = compressOctets(127, 0, 0, 0);
+    classified = getNetworkType(ipAddress);
+    CHECK(LOCALHOST == classified);
+}
