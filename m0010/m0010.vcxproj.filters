@@ -23,10 +23,10 @@
     <ClCompile Include="network.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="networktest.cpp">
+    <ClCompile Include="m0010.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="m0010.cpp">
+    <ClCompile Include="networktests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
