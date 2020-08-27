@@ -62,5 +62,6 @@ networkType getNetworkType(ip ipAddress) {
     else if (octet0 >= 240 && octet0 <= 255) {
         return CLASSE; 
     }
+
     return INVALID;
 }
