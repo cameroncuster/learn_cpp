@@ -36,7 +36,7 @@ TEST_CASE("compressOctets - testing CLASSB ip address")
     ip ipAddress = compressOctets(octet0, octet1, octet2, octet3);
     CHECK(3204448255 == ipAddress);
 }
-/
+
 TEST_CASE("compressOctets - testing CLASSC ip address")
 {
     // Test case #3 - CLASSC
@@ -46,7 +46,7 @@ TEST_CASE("compressOctets - testing CLASSC ip address")
     octet octet3 = 255;
 
     ip ipAddress = compressOctets(octet0, octet1, octet2, octet3);
-    CHECK(3741319467 == ipAddress);
+    CHECK(3741319167 == ipAddress);
 }
 
 TEST_CASE("compressOctets - testing CLASSD ip address")
@@ -88,88 +88,88 @@ TEST_CASE("extractOctets - testing example ip to octet")
     CHECK(octet2 == 15);
     CHECK(octet3 == 20);
 }
-/*
-TEST_CASE("extractOctets - testing a class_ ip to octet")
+
+TEST_CASE("extractOctets - testing CLASSA ip to octet")
 {
     // Test case #1 - CLASSA
-    ip ipAddress = compressOctets();
+    ip ipAddress = compressOctets(126, 255, 255, 255);
     octet octet0 = 0;
     octet octet1 = 0;
     octet octet2 = 0;
     octet octet3 = 0;
 
     extractOctets(ipAddress, octet0, octet1, octet2, octet3);
-    CHECK(octet0 == );
-    CHECK(octet1 == );
-    CHECK(octet2 == );
-    CHECK(octet3 == );
+    CHECK(octet0 == 126);
+    CHECK(octet1 == 255);
+    CHECK(octet2 == 255);
+    CHECK(octet3 == 255);
 }
 
-TEST_CASE("extractOctets - testing a class_ ip to octet")
+TEST_CASE("extractOctets - testing CLASSB ip to octet")
 {
     // Test case #2 - CLASSB
-    ip ipAddress = compressOctets();
+    ip ipAddress = compressOctets(190, 255, 255, 255);
     octet octet0 = 0;
     octet octet1 = 0;
     octet octet2 = 0;
     octet octet3 = 0;
 
     extractOctets(ipAddress, octet0, octet1, octet2, octet3);
-    CHECK(octet0 == );
-    CHECK(octet1 == );
-    CHECK(octet2 == );
-    CHECK(octet3 == );
+    CHECK(octet0 == 190);
+    CHECK(octet1 == 255);
+    CHECK(octet2 == 255);
+    CHECK(octet3 == 255);
 }
 
-TEST_CASE("extractOctets - testing a class_ ip to octet")
+TEST_CASE("extractOctets - testing CLASSC ip to octet")
 {
     // Test case #3 - CLASSC
-    ip ipAddress = compressOctets();
+    ip ipAddress = compressOctets(222, 255, 255, 255);
     octet octet0 = 0;
     octet octet1 = 0;
     octet octet2 = 0;
     octet octet3 = 0;
 
     extractOctets(ipAddress, octet0, octet1, octet2, octet3);
-    CHECK(octet0 == );
-    CHECK(octet1 == );
-    CHECK(octet2 == );
-    CHECK(octet3 == );
+    CHECK(octet0 == 222);
+    CHECK(octet1 == 255);
+    CHECK(octet2 == 255);
+    CHECK(octet3 == 255);
 }
 
-TEST_CASE("extractOctets - testing a class_ ip to octet")
+TEST_CASE("extractOctets - testing CLASSD ip to octet")
 {
     // Test case #4 - CLASSD
-    ip ipAddress = compressOctets();
+    ip ipAddress = compressOctets(239, 255, 255, 255);
     octet octet0 = 0;
     octet octet1 = 0;
     octet octet2 = 0;
     octet octet3 = 0;
 
     extractOctets(ipAddress, octet0, octet1, octet2, octet3);
-    CHECK(octet0 == );
-    CHECK(octet1 == );
-    CHECK(octet2 == );
-    CHECK(octet3 == );
+    CHECK(octet0 == 239);
+    CHECK(octet1 == 255);
+    CHECK(octet2 == 255);
+    CHECK(octet3 == 255);
 }
 
-TEST_CASE("extractOctets - testing a class_ ip to octet")
+TEST_CASE("extractOctets - testing CLASSE ip to octet")
 {
     // Test case #5 - CLASSE
-    ip ipAddress = compressOctets();
+    ip ipAddress = compressOctets(255, 255, 255, 255);
     octet octet0 = 0;
     octet octet1 = 0;
     octet octet2 = 0;
     octet octet3 = 0;
 
     extractOctets(ipAddress, octet0, octet1, octet2, octet3);
-    CHECK(octet0 == );
-    CHECK(octet1 == );
-    CHECK(octet2 == );
-    CHECK(octet3 == );
+    CHECK(octet0 == 255);
+    CHECK(octet1 == 255);
+    CHECK(octet2 == 255);
+    CHECK(octet3 == 255);
 }
-*/
-TEST_CASE("getNetworkType - classifying a class_ networks including private") {
+
+TEST_CASE("getNetworkType - classifying example networks including private") {
     ip ipAddress = compressOctets(151, 159, 15, 20);
     networkType classified = getNetworkType(ipAddress);
     CHECK(CLASSB == classified);
