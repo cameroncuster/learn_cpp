@@ -26,3 +26,13 @@ TEST_CASE("extractOctets - testing a class b ip to octet version1")
     CHECK(octet2 == 15);
     CHECK(octet3 == 20);
 }
+
+TEST_CASE("getNetworkType - classifying a class b networks including private") {
+    ip ipAddress = compressOctets(151, 159, 15, 20);
+    networkType classified = getNetworkType(ipAddress);
+    CHECK(CLASSB == classified);
+
+    ipAddress = compressOctets(172, 18, 4, 20);
+    classified = getNetworkType(ipAddress);
+    CHECK(BPRIVATE == classified);
+}

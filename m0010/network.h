@@ -11,5 +11,6 @@ typedef unsigned int ip;
 // Three function prototypes
 ip compressOctets(octet, octet, octet, octet);
 void extractOctets(ip, octet &, octet &, octet &, octet &);
+networkType getNetworkType(ip);
 
 #endif
