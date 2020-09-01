@@ -27,7 +27,7 @@ int main(int argc) {
     input.open("data1.txt");
     
     if (!input.is_open()) {
-        cout << "Unable to open the input file: data1.txt" << endl;
+        cout << "Unable to open the input file: nofile.txt" << endl;
         exit(0);
     }
 
