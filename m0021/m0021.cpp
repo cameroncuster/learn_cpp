@@ -118,7 +118,6 @@ float sumArray(float* ptr, int cols)
         sum += ptr[i];
     }
     return sum;
-    //return a pointer to the sum not the sum
 }
 
 float* findMin(float* ptr, int cols)
