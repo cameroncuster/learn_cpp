@@ -14,6 +14,7 @@ int main(int argc) {
 
     // check for correct number of command line arguments
     if (argc != 3) {
+        cout << "Usage: m0021.exe inputfile outputfile";
         exit(0);
     }
 
@@ -27,12 +28,14 @@ int main(int argc) {
     
     if (!input.is_open()) {
         cout << "Unable to open the input file: data1.txt" << endl;
+        exit(0);
     }
 
     output.open("data2.txt");
 
     if (!output.is_open()) {
         cout << "Unable to open the output file: data2.txt" << endl;
+        exit(0);
     }
 
     input >> rows >> cols;
