@@ -39,31 +39,19 @@ int main() {
         }
     }
 
-    // find the sums of each row in the 2d array
-    float sum0 = sumArray(array2d[0], cols);
-    float sum1 = sumArray(array2d[1], cols);
-    float sum2 = sumArray(array2d[2], cols);
-
-    // find the mins in each row in the 2d array
-    float min0 = findMin(array2d[0], cols);
-    float min1 = findMin(array2d[1], cols);
-    float min2 = findMin(array2d[2], cols);
-
-    // find the maxs in each row in the 2d array
-    float max0 = findMax(array2d[0], cols);
-    float max1 = findMax(array2d[1], cols);
-    float max2 = findMax(array2d[2], cols);
-
-    // sample print values in the array
+    // output the array values to the output file
     for (int i = 0; i < rows; i++) {
-        for (int j = 1; j < cols; j++) {
-            cout << setw(14) << array2d[i][j];
-        }
+        cout << fixed << setprecision(3) << "Row: " << setw(10) << i
+            << " Sum: " << setw(15) << sumArray(array2d[i], cols)
+            << " Minimum: " << setw(15) << findMin(array2d[i], cols)
+            << " Maximum: " << setw(15) << findMax(array2d[i], cols) << endl;
     }
 
     // free the memory used by the array
     free2d(array2d, rows);
 
+    input.close();
+    output.close();
     return 0;
 }
 
@@ -87,6 +75,7 @@ void free2d(float**& ptr, int rows) {
         delete ptr[i];
     }
     delete[] ptr;
+    ptr = nullptr;
 }
 
 float sumArray(float* ptr, int cols) {
