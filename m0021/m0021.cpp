@@ -10,7 +10,7 @@ float sumArray(float*, int);
 float findMin(float*, int);
 float findMax(float*, int);
 
-int main(int argc) {
+int main(int argc, char *argv[]) {
 
     // check for correct number of command line arguments
     if (argc != 3) {
@@ -27,14 +27,14 @@ int main(int argc) {
     input.open("data1.txt");
     
     if (!input.is_open()) {
-        cout << "Unable to open the input file: nofile.txt" << endl;
+        cout << "Unable to open the input file: " << argv[1] << endl;
         exit(0);
     }
 
     output.open("data2.txt");
 
     if (!output.is_open()) {
-        cout << "Unable to open the output file: data2.txt" << endl;
+        cout << "Unable to open the output file: " << argv[2] << endl;
         exit(0);
     }
 
