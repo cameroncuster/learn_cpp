@@ -10,7 +10,13 @@ float sumArray(float*, int);
 float findMin(float*, int);
 float findMax(float*, int);
 
-int main(fstream, fstream) {
+int main(int argc) {
+
+    // check for proper number of command line arguments
+    if (argc != 2) {
+        exit(1);
+    }
+
     // create a 2d array and define rows and columns
     float** array2d = nullptr;
     int rows = 0;
