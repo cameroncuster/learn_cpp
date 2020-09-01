@@ -12,7 +12,7 @@ float findMax(float*, int);
 
 int main(int argc, char** argv)
 {
-    // check for correct number of command line arguments
+    // check for proper number of command line arguments
     if (argc != 3)
     {
         cout << "Usage: m0021.exe inputfile outputfile";
