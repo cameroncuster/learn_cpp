@@ -6,8 +6,12 @@ using namespace std;
 
 void alloc2d(float**&, int, int);
 void free2d(float**&, int);
+float sumArray(float*, int);
+float findMin(float*, int);
+float findMax(float*, int);
 
 int main() {
+    // create a 2d array and define rows and columns
     float** array2d = nullptr;
     int rows = 0;
     int cols = 0;
@@ -27,14 +31,37 @@ int main() {
 
     input >> rows >> cols;
 
+    // allocate a dynamic 2d array and assign values from the input
     alloc2d(array2d, rows, cols);
-
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
             input >> array2d[i][j];
         }
     }
 
+    // find the sums of each row in the 2d array
+    float sum0 = sumArray(array2d[0], cols);
+    float sum1 = sumArray(array2d[1], cols);
+    float sum2 = sumArray(array2d[2], cols);
+
+    // find the mins in each row in the 2d array
+    float min0 = findMin(array2d[0], cols);
+    float min1 = findMin(array2d[1], cols);
+    float min2 = findMin(array2d[2], cols);
+
+    // find the maxs in each row in the 2d array
+    float max0 = findMax(array2d[0], cols);
+    float max1 = findMax(array2d[1], cols);
+    float max2 = findMax(array2d[2], cols);
+
+    // sample print values in the array
+    for (int i = 0; i < rows; i++) {
+        for (int j = 1; j < cols; j++) {
+            cout << setw(14) << array2d[i][j];
+        }
+    }
+
+    // free the memory used by the array
     free2d(array2d, rows);
 
     return 0;
