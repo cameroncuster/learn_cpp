@@ -58,10 +58,10 @@ int main(int argc, char** argv)
     output << rows << setw(2) << cols << endl << fixed << showpoint << setprecision(3);
     for (int i = 0; i < rows; i++)
     {
-        output << "Row: " << setw(10) << i
-            << " Sum: " << setw(15) << sumArray(array2d[i], cols)
-            << " Minimum: " << setw(15) << findMin(array2d[i], cols)
-            << " Maximum: " << setw(15) << findMax(array2d[i], cols) << endl;
+        output << "Row:" << setw(10) << i
+            << " Sum:" << setw(15) << sumArray(array2d[i], cols)
+            << " Minimum:" << setw(15) << findMin(array2d[i], cols)
+            << " Maximum:" << setw(15) << findMax(array2d[i], cols) << endl;
     }
 
     for (int i = 0; i < rows; i++)
@@ -118,6 +118,7 @@ float sumArray(float* ptr, int cols)
         sum += ptr[i];
     }
     return sum;
+    //return a pointer to the sum not the sum
 }
 
 float findMin(float* ptr, int cols)
