@@ -12,7 +12,7 @@ float findMax(float*, int);
 
 int main(int argc) {
 
-    // check for proper number of command line arguments
+    // check for correct number of command line arguments
     if (argc != 2) {
         exit(1);
     }
