@@ -39,12 +39,19 @@ int main() {
         }
     }
 
-    // output the array values to the output file
+    // output the array and its values to the output file
     for (int i = 0; i < rows; i++) {
-        cout << fixed << setprecision(3) << "Row: " << setw(10) << i
+        output << fixed << setprecision(3) << "Row: " << setw(10) << i
             << " Sum: " << setw(15) << sumArray(array2d[i], cols)
             << " Minimum: " << setw(15) << findMin(array2d[i], cols)
             << " Maximum: " << setw(15) << findMax(array2d[i], cols) << endl;
+    }
+
+    for (int i = 0; i < rows; i++) {
+        output << endl;
+        for (int j = 0; j < cols; j++) {
+            output << fixed << setprecision(3) << setw(15) << array2d[i][j];
+        }
     }
 
     // free the memory used by the array
