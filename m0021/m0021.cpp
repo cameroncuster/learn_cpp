@@ -30,7 +30,7 @@ int main(int argc, char** argv)
 
     if (!input.is_open())
     {
-        cout << "Unable to open the input file: " << argv[1] << endl;
+        cout << "Unable to open input file: " << argv[1] << endl;
         exit(0);
     }
 
@@ -38,7 +38,7 @@ int main(int argc, char** argv)
 
     if (!output.is_open())
     {
-        cout << "Unable to open the output file: " << argv[2] << endl;
+        cout << "Unable to open output file: " << argv[2] << endl;
         exit(0);
     }
 
