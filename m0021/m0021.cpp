@@ -55,10 +55,10 @@ int main(int argc, char** argv)
     }
 
     // output the array and its values to the output file
-    cout << rows << setw(2) << cols << endl << fixed << showpoint << setprecision(3);
+    output << rows << setw(2) << cols << endl << fixed << showpoint << setprecision(3);
     for (int i = 0; i < rows; i++)
     {
-        cout << "Row: " << setw(10) << i
+        output << "Row: " << setw(10) << i
             << " Sum: " << setw(15) << sumArray(array2d[i], cols)
             << " Minimum: " << setw(15) << findMin(array2d[i], cols)
             << " Maximum: " << setw(15) << findMax(array2d[i], cols) << endl;
@@ -66,10 +66,10 @@ int main(int argc, char** argv)
 
     for (int i = 0; i < rows; i++)
     {
-        cout << endl;
+        output << endl;
         for (int j = 0; j < cols; j++)
         {
-            cout << setw(15) << array2d[i][j];
+            output << setw(15) << array2d[i][j];
         }
     }
 
