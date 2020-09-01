@@ -14,7 +14,7 @@ int main(int argc) {
 
     // check for correct number of command line arguments
     if (argc != 3) {
-        exit(1);
+        exit(0);
     }
 
     // create a 2d array and define rows and columns
@@ -72,13 +72,13 @@ void alloc2d(float**& ptr, int rows, int cols) {
     ptr = new (nothrow) float* [rows];
     if (ptr == nullptr) {
         cout << "Not enough memory to run the program." << endl;
-        exit(1);
+        exit(0);
     }
     for (int i = 0; i < rows; i++) {
         ptr[i] = new (nothrow) float[cols];
         if (ptr[i] == nullptr) {
             cout << "Not enough memory to run the program." << endl;
-            exit(1);
+            exit(0);
         }
     }
 }
