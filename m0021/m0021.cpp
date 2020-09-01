@@ -10,7 +10,7 @@ float sumArray(float*, int);
 float findMin(float*, int);
 float findMax(float*, int);
 
-int main() {
+int main(fstream, fstream) {
     // create a 2d array and define rows and columns
     float** array2d = nullptr;
     int rows = 0;
