@@ -7,8 +7,8 @@ using namespace std;
 void alloc2d(float**&, int, int);
 void free2d(float**&, int);
 float sumArray(float*, int);
-float findMin(float*, int);
-float findMax(float*, int);
+float* findMin(float*, int);
+float* findMax(float*, int);
 
 int main(int argc, char** argv)
 {
@@ -60,8 +60,8 @@ int main(int argc, char** argv)
     {
         output << "Row:" << setw(10) << i
             << " Sum:" << setw(15) << sumArray(array2d[i], cols)
-            << " Minimum:" << setw(15) << findMin(array2d[i], cols)
-            << " Maximum:" << setw(15) << findMax(array2d[i], cols) << endl;
+            << " Minimum:" << setw(15) << *findMin(array2d[i], cols)
+            << " Maximum:" << setw(15) << *findMax(array2d[i], cols) << endl;
     }
 
     for (int i = 0; i < rows; i++)
@@ -121,28 +121,30 @@ float sumArray(float* ptr, int cols)
     //return a pointer to the sum not the sum
 }
 
-float findMin(float* ptr, int cols)
+float* findMin(float* ptr, int cols)
 {
     float min = FLT_MAX;
+    int loc = 0;
     for (int i = 0; i < cols; i++)
     {
         if (min > ptr[i])
         {
-            min = ptr[i];
+            loc = i;
         }
     }
-    return min;
+    return ptr;
 }
 
-float findMax(float* ptr, int cols)
+float* findMax(float* ptr, int cols)
 {
     float max = FLT_TRUE_MIN;
+    int loc = 0;
     for (int i = 0; i < cols; i++)
     {
         if (max < ptr[i])
         {
-            max = ptr[i];
+            loc = i;
         }
     }
-    return max;
+    return ptr;
 }
