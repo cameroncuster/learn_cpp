@@ -7,8 +7,8 @@ using namespace std;
 void alloc2d(float**&, int, int);
 void free2d(float**&, int);
 float sumArray(float*, int);
-float* findMin(float*, int);
-float* findMax(float*, int);
+float* findMin(float*&, int);
+float* findMax(float*&, int);
 
 int main(int argc, char** argv)
 {
@@ -120,30 +120,28 @@ float sumArray(float* ptr, int cols)
     return sum;
 }
 
-float* findMin(float* ptr, int cols)
+float* findMin(float* &ptr, int cols)
 {
-    float min = FLT_MAX;
-    int loc = 0;
-    for (int i = 0; i < cols; i++)
+    int minLocation = 0;
+    for (int i = 1; i < cols; i++)
     {
-        if (min > ptr[i])
+        if (ptr[minLocation] > ptr[i])
         {
-            loc = i;
+            minLocation = i;
         }
     }
-    return ptr;
+    return &ptr[minLocation];
 }
 
-float* findMax(float* ptr, int cols)
+float* findMax(float* &ptr, int cols)
 {
-    float max = FLT_TRUE_MIN;
-    int loc = 0;
-    for (int i = 0; i < cols; i++)
+    int maxLocation = 0;
+    for (int i = 1; i < cols; i++)
     {
-        if (max < ptr[i])
+        if (ptr[maxLocation] < ptr[i])
         {
-            loc = i;
+            maxLocation = i;
         }
     }
-    return ptr;
+    return &ptr[maxLocation];
 }
