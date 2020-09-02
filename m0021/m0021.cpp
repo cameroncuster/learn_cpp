@@ -55,7 +55,7 @@ int main(int argc, char** argv)
     }
 
     // output the array and its values to the output file
-    output << rows << setw(2) << cols << endl << fixed << showpoint << setprecision(3);
+    output << rows << " " << cols << endl << fixed << showpoint << setprecision(3);
     for (int i = 0; i < rows; i++)
     {
         output << "Row:" << setw(10) << i
