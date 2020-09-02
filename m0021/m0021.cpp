@@ -64,13 +64,14 @@ int main(int argc, char** argv)
             << " Maximum:" << setw(15) << *findMax(array2d[i], cols) << endl;
     }
 
+    output << endl;
     for (int i = 0; i < rows; i++)
     {
-        output << endl;
         for (int j = 0; j < cols; j++)
         {
             output << setw(15) << array2d[i][j];
         }
+        output << endl;
     }
 
     // free the memory used by the array
