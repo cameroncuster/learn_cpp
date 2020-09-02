@@ -59,9 +59,9 @@ int main(int argc, char** argv)
     for (int i = 0; i < rows; i++)
     {
         output << "Row:" << setw(10) << i
-            << "Sum:" << setw(15) << sumArray(array2d[i], cols)
-            << "Minimum:" << setw(15) << *findMin(array2d[i], cols)
-            << "Maximum:" << setw(15) << *findMax(array2d[i], cols) << endl;
+            << " Sum:" << setw(15) << sumArray(array2d[i], cols)
+            << " Minimum:" << setw(15) << *findMin(array2d[i], cols)
+            << " Maximum:" << setw(15) << *findMax(array2d[i], cols) << endl;
     }
 
     for (int i = 0; i < rows; i++)
