@@ -5,7 +5,7 @@ void cTrim(char &strManip, trimType method)
     char tempStr = NULL;
     if (method == FRONT)
     {
-        for (int i = 0; i < strlen(&strManip); i++)
+        for (int i = 0; i <= strlen(&strManip); i++)
         {
             if (strManip[i].isspace() == false)
             {
