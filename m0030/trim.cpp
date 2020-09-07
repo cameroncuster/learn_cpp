@@ -1,10 +1,17 @@
 #include "trim.h"
 
-void cTrim(char stringManip, trimType method)
+void cTrim(char &strManip, trimType method)
 {
+    char tempStr = NULL;
     if (method == FRONT)
     {
-        // remove whitespace from beginning of string
+        for (int i = 0; i < strlen(&strManip); i++)
+        {
+            if (strManip[i].isspace() == false)
+            {
+                tempStr = strcpy(tempStr, &strManip);
+            }
+        }
     }
     else if (method == END)
     {
@@ -16,7 +23,7 @@ void cTrim(char stringManip, trimType method)
     }
 }
 
-void sTrim(string stringManip, trimType method)
+void sTrim(string &stringManip, trimType method)
 {
     if (method == FRONT)
     {
