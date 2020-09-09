@@ -1,40 +1,32 @@
 #include "trim.h"
 
-void cTrim(char &strManip, trimType method)
+void cTrim(char theString[], trimType method)
 {
-    char tempStr = NULL;
-    if (method == FRONT)
+    int i = 0;
+    char *tempStr = nullptr;
+    if (method == FRONT || method == BOTH)
     {
-        for (int i = 0; i <= strlen(&strManip); i++)
+        while(i < strlen(theString) && theString == 0)
         {
-            if (strManip[i].isspace() == false)
-            {
-                tempStr = strcpy(tempStr, &strManip);
-            }
+            strcpy(theString, &theString[i]);
+            i++;
         }
     }
-    else if (method == END)
+    
+    if (method == END || method == BOTH)
     {
         // remove whitespace from end of string
-    }
-    else if (method == BOTH)
-    {
-        // remove whitespace from beginning and end of string
     }
 }
 
-void sTrim(string &stringManip, trimType method)
+void sTrim(string &theString, trimType method)
 {
-    if (method == FRONT)
+    if (method == FRONT || method == BOTH)
     {
         // remove whitespace from beginning of string
     }
-    else if (method == END)
+    else if (method == END || method == BOTH)
     {
         // remove whitespace from end of string
-    }
-    else if (method == BOTH)
-    {
-        // remove whitespace from beginning and end of string
     }
 }

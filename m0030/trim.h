@@ -6,6 +6,6 @@ using namespace std;
 
 enum trimType{BOTH, FRONT, END};
 
-void cTrim(char, trimType);
+void cTrim(char &, trimType);
 
-void sTrim(std::string, trimType);
+void sTrim(std::string &, trimType);
