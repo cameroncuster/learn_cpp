@@ -6,16 +6,16 @@ void cTrim(char theString[], trimType method)
     char *tempStr = nullptr;
     if (method == FRONT || method == BOTH)
     {
-        while (i <= strlen(theString) && theString == 0)
+        while (i <= strlen(theString) && theString == "\0")
         {
             strcpy(theString, &theString[i]);
             i++;
         }
     }
-    int i = 0;
+    i = 0;
     if (method == END || method == BOTH)
     {        
-        while (i <= strlen(theString) && theString != 0)
+        while (i <= strlen(theString) && theString != "\0")
         {
             strcpy(theString, &theString[i]);
             i++;
@@ -29,7 +29,7 @@ void sTrim(string &theString, trimType method)
     {
         // remove whitespace from beginning of string
     }
-    else if (method == END || method == BOTH)
+    if (method == END || method == BOTH)
     {
         // remove whitespace from end of string
     }
