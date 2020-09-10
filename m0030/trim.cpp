@@ -6,11 +6,11 @@ void cTrim(char theString[], trimType method)
     int i = 0;
     if (method == FRONT || method == BOTH)
     {
-        while (i >= 0 && isspace(theString[i]) != 0)
+        while (i <= strlen(theString) && isspace(theString[i]) != 0)
         {
-            strcpy(theString, &theString[i]);
             i++;
         }
+        strcpy(theString, &theString[i]);
     }
     i = strlen(theString) - 1;
     if (method == END || method == BOTH)
@@ -32,18 +32,25 @@ void sTrim(string &theString, trimType method)
         it = theString.begin();
         while (it != theString.end() && isspace(*it) != 0)
         {
-            *it++;
+            it++;
         }
         theString.erase(theString.begin(), it);
     }
-    it = theString.end() - 1;
     if (method == END || method == BOTH)
     {
-        while (*it >= 0 && isspace(*it) != 0)
+        it = theString.end() - 1;
+        while (it != theString.begin() && isspace(*it) != 0)
         {
-            *it--;
+            it--;
         }
-        *it++;
-        theString.erase(it, theString.end());
+        if (it == theString.begin())
+        {
+            theString.erase(it, theString.end());
+        }
+        else
+        {
+            it++;
+            theString.erase(it, theString.end());
+        }
     }
 }
