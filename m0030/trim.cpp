@@ -38,6 +38,10 @@ void sTrim(string &theString, trimType method)
     }
     if (method == END || method == BOTH)
     {
+        if (theString.size() == 0)
+        {
+            return;
+        }
         it = theString.end() - 1;
         while (it != theString.begin() && isspace(*it) != 0)
         {
