@@ -1,34 +1,41 @@
-#include "trim.h"
+#define _CRT_SECURE_NO_WARNINGS
+#include "trim.h" 
 
 void cTrim(char theString[], trimType method)
 {
     int i = 0;
-    char *tempStr = nullptr;
     if (method == FRONT || method == BOTH)
     {
-        while (i <= strlen(theString) && theString == "\0")
+        while (isspace(theString[i]) != 0)
         {
             strcpy(theString, &theString[i]);
             i++;
         }
     }
-    i = 0;
+    i = strlen(theString) - 1;
     if (method == END || method == BOTH)
-    {        
-        while (i <= strlen(theString) && theString != "\0")
+    {
+        while (i >= 0 && isspace(theString[i]))
         {
-            strcpy(theString, &theString[i]);
-            i++;
+            i--;
         }
+        i++;
+        theString[i] = '\0';
     }
 }
 
 void sTrim(string &theString, trimType method)
 {
+    string::iterator it;
     if (method == FRONT || method == BOTH)
     {
-        // remove whitespace from beginning of string
+        it = theString.begin();
+        while (it != theString.end() && isspace(*it))
+        {
+            it++;
+        }
     }
+    it = theString.end() - 1;
     if (method == END || method == BOTH)
     {
         // remove whitespace from end of string

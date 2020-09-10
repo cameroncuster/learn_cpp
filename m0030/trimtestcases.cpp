@@ -9,19 +9,19 @@ TEST_CASE("cTrim - Testing C strings with no ws on either end")
 
     SECTION("Front - Just a phrase")
     {
-        cTrim(theString[99], FRONT);
+        cTrim(theString, FRONT);
         CHECK(strcmp(theAnswer, theString) == 0);
     }
 
     SECTION("End - Just a phrase")
     {
-        cTrim(theString[99], END);
+        cTrim(theString, END);
         CHECK(strcmp(theAnswer, theString) == 0);
     }
 
     SECTION("Both - Just a phrase")
     {
-        cTrim(theString[99], BOTH);
+        cTrim(theString, BOTH);
         CHECK(strcmp(theAnswer, theString) == 0);
     }
 }
@@ -57,7 +57,7 @@ TEST_CASE("cTrim - Testing C strings with whitespace on both ends")
 
     SECTION("Front - Just a phrase")
     {
-        cTrim(theString[99], FRONT);
+        cTrim(theString, FRONT);
         char theAnswer[99] = "Catch with Sections!  ";
         CHECK(strcmp(theAnswer, theString) == 0);
     }
@@ -65,7 +65,7 @@ TEST_CASE("cTrim - Testing C strings with whitespace on both ends")
 
     SECTION("End - Just a phrase")
     {
-        cTrim(theString[99], END);
+        cTrim(theString, END);
         char theAnswer[99] = "  Catch with Sections!";
         CHECK(strcmp(theAnswer, theString) == 0);
     }
@@ -73,7 +73,7 @@ TEST_CASE("cTrim - Testing C strings with whitespace on both ends")
 
     SECTION("Both - Just a phrase")
     {
-        cTrim(theString[99], BOTH);
+        cTrim(theString, BOTH);
         char theAnswer[99] = "Catch with Sections!";
         CHECK(strcmp(theAnswer, theString) == 0);
     }

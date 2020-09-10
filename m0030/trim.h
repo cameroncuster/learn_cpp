@@ -5,7 +5,6 @@
 using namespace std;
 
 enum trimType{BOTH, FRONT, END};
+void cTrim(char theString[], trimType method);
 
-void cTrim(char &, trimType);
-
-void sTrim(std::string &, trimType);
+void sTrim(string &, trimType);
