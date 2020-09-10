@@ -12,7 +12,7 @@ void cTrim(char theString[], trimType method)
         }
         strcpy(theString, &theString[i]);
     }
-    i = strlen(theString) - 1;
+    i = int(strlen(theString) - 1);
     if (method == END || method == BOTH)
     {
         while (i >= 0 && isspace(theString[i]) != 0)
