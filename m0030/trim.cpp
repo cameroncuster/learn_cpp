@@ -6,7 +6,7 @@ void cTrim(char theString[], trimType method)
     int i = 0;
     if (method == FRONT || method == BOTH)
     {
-        while (isspace(theString[i]) != 0)
+        while (i >= 0 && isspace(theString[i]) != 0)
         {
             strcpy(theString, &theString[i]);
             i++;
@@ -15,7 +15,7 @@ void cTrim(char theString[], trimType method)
     i = strlen(theString) - 1;
     if (method == END || method == BOTH)
     {
-        while (i >= 0 && isspace(theString[i]))
+        while (i >= 0 && isspace(theString[i]) != 0)
         {
             i--;
         }
@@ -30,14 +30,20 @@ void sTrim(string &theString, trimType method)
     if (method == FRONT || method == BOTH)
     {
         it = theString.begin();
-        while (it != theString.end() && isspace(*it))
+        while (it != theString.end() && isspace(*it) != 0)
         {
-            it++;
+            *it++;
         }
+        theString.erase(theString.begin(), it);
     }
     it = theString.end() - 1;
     if (method == END || method == BOTH)
     {
-        // remove whitespace from end of string
+        while (*it >= 0 && isspace(*it) != 0)
+        {
+            *it--;
+        }
+        *it++;
+        theString.erase(it, theString.end());
     }
 }
