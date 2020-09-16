@@ -61,7 +61,7 @@ void printFile(fstream &bFile)
 void applyBonus(fstream &bFile, int empID)
 {
     empData employee;
-    double bonus = 500;
+    double bonus;
     bool check = false;
 
     bFile.clear();
@@ -83,7 +83,8 @@ void applyBonus(fstream &bFile, int empID)
     }
 
     bFile.clear();
-    bFile.seekp(int(sizeof(empData) - sizeof(double)), ios::cur);
-    bFile.write((char*)&bonus, sizeof(double));
+    bFile.seekp(-int(sizeof(double)), ios::cur);
+    employee.bonus += 500;
+    bFile.write((char*)&employee.bonus, sizeof(double));
     cout << "Employee ID " << empID << " has been updated." << endl;
 }
