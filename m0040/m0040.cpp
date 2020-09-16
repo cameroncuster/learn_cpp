@@ -74,7 +74,7 @@ void applyBonus(fstream &bFile, char argv[2])
         i += 60;
     }
 
-    if (j != id || argv[2] != id)
+    if (j == id || (int)argv[2] == id)
     {
         cout << "Employee ID " << argv[2] << " was not found." << endl;
         bFile.close();
