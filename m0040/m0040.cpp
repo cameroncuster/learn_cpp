@@ -15,7 +15,7 @@ struct empData
 };
 
 void printFile(fstream &bFile);
-void applyBonus(fstream &bFile, int empID);
+bool applyBonus(fstream &bFile, int empID);
 
 int main(int argc, char *argv[])
 {    
@@ -36,7 +36,21 @@ int main(int argc, char *argv[])
     }
 
     printFile(bFile);
-    applyBonus(bFile, empID);
+    bool check = applyBonus(bFile, empID);
+    if (check == true)
+    {
+        cout << endl;
+        cout << "Employee ID " << empID << " has been updated." << endl << endl;
+    }
+
+    if (check == false)
+    {
+        cout << endl;
+        cout << "Employee ID " << empID << " was not found." << endl << endl;
+        bFile.close();
+        exit(1);
+    }
+
     printFile(bFile);
     bFile.close();
     return 0;
@@ -58,33 +72,24 @@ void printFile(fstream &bFile)
     }
 }
 
-void applyBonus(fstream &bFile, int empID)
+bool applyBonus(fstream &bFile, int empID)
 {
     empData employee;
-    double bonus;
-    bool check = false;
 
+    bFile.seekg(0, ios::beg);
     bFile.clear();
     while (bFile.read((char*)&employee, sizeof(empData)))
     {
         bFile.clear();
         if (employee.id == empID)
         {
-            check = true;
-            break;
+            return false;
         }
-    }
-
-    if (check == true)
-    {
-        cout << "Employee ID " << empID << " was not found." << endl;
-        bFile.close();
-        exit(1);
     }
 
     bFile.clear();
     bFile.seekp(-int(sizeof(double)), ios::cur);
     employee.bonus += 500;
     bFile.write((char*)&employee.bonus, sizeof(double));
-    cout << "Employee ID " << empID << " has been updated." << endl;
+    return true;
 }
