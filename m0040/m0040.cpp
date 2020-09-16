@@ -71,7 +71,7 @@ void applyBonus(fstream &bFile, char argv[2])
         bFile.clear();
         bFile.seekp(i, ios::beg);
         bFile.read((char*)&id, sizeof(int));
-        i += 60;
+        i += sizeof(empData);
     }
 
     if (j == id || (int)argv[2] == id)
@@ -83,7 +83,5 @@ void applyBonus(fstream &bFile, char argv[2])
 
     bFile.seekp(int(sizeof(empData) - sizeof(int) - sizeof(double)), ios::cur);
     bFile.write((char*)&bonus, sizeof(double));
-    // what do I need to do to my write function?
-
     cout << "Employee ID " << argv[2] << " has been updated." << endl;
 }
