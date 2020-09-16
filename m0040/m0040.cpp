@@ -62,7 +62,7 @@ void applyBonus(fstream &bFile, char argv[2])
     int i = 0;
     int j = 0;
     int id = 0;
-    int bonus = 500;
+    double bonus = 500;
     bFile.clear();
     bFile.seekp(0, ios::beg);
     bFile.read((char*)&j, sizeof(int));
