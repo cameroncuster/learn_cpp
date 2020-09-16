@@ -62,17 +62,20 @@ void applyBonus(fstream &bFile, int empID)
 {
     empData employee;
     double bonus = 500;
+    bool check = false;
 
+    bFile.clear();
     while (bFile.read((char*)&employee, sizeof(empData)))
     {
         bFile.clear();
         if (employee.id == empID)
         {
+            check = true;
             break;
         }
     }
 
-    if (empID != employee.id)
+    if (check == true)
     {
         cout << "Employee ID " << empID << " was not found." << endl;
         bFile.close();
