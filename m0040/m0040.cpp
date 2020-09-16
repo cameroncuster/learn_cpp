@@ -15,7 +15,7 @@ struct empData
 };
 
 void printFile(fstream &bFile);
-void applyBonus(fstream& bFile, char argv[2]);
+void applyBonus(fstream &bFile, int empID);
 
 int main(int argc, char *argv[])
 {    
@@ -25,9 +25,10 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
+    int empID = stoi(argv[2]);
     fstream bFile;
     
-    bFile.open("data1.bin", ios::in | ios::out | ios::binary);
+    bFile.open("data1.bin", ios::in | ios::out | ios::binary | ios::ate);
     if (!bFile.is_open())
     {
         cout << "Unable to open binary file: " << argv[1] << endl;
@@ -35,7 +36,7 @@ int main(int argc, char *argv[])
     }
 
     printFile(bFile);
-    applyBonus(bFile, argv[2]);
+    applyBonus(bFile, empID);
     printFile(bFile);
     bFile.close();
     return 0;
@@ -57,31 +58,29 @@ void printFile(fstream &bFile)
     }
 }
 
-void applyBonus(fstream &bFile, char argv[2])
+void applyBonus(fstream &bFile, int empID)
 {
-    int i = 0;
-    int j = 0;
-    int id = 0;
+    empData employee;
     double bonus = 500;
-    bFile.clear();
-    bFile.seekp(0, ios::beg);
-    bFile.read((char*)&j, sizeof(int));
-    while (argv[2] != id && j != id)
+
+    while (bFile.read((char*)&employee, sizeof(empData)))
     {
         bFile.clear();
-        bFile.seekp(i, ios::beg);
-        bFile.read((char*)&id, sizeof(int));
-        i += sizeof(empData);
+        if (employee.id == empID)
+        {
+            break;
+        }
     }
 
-    if (j == id || (int)argv[2] == id)
+    if (empID != employee.id)
     {
-        cout << "Employee ID " << argv[2] << " was not found." << endl;
+        cout << "Employee ID " << empID << " was not found." << endl;
         bFile.close();
         exit(1);
     }
 
-    bFile.seekp(int(sizeof(empData) - sizeof(int) - sizeof(double)), ios::cur);
+    bFile.clear();
+    bFile.seekp(int(sizeof(empData) - sizeof(double)), ios::cur);
     bFile.write((char*)&bonus, sizeof(double));
-    cout << "Employee ID " << argv[2] << " has been updated." << endl;
+    cout << "Employee ID " << empID << " has been updated." << endl;
 }
