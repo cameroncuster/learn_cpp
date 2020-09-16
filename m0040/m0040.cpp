@@ -59,26 +59,31 @@ void printFile(fstream &bFile)
 
 void applyBonus(fstream &bFile, char argv[2])
 {
-    // check if the id is here, ask how to do this
+    int i = 0;
+    int j = 0;
+    int id = 0;
+    int bonus = 500;
     bFile.clear();
     bFile.seekp(0, ios::beg);
-    int i = 0;
-    char id;
-    char* idptr = &id;
-    idptr = new (nothrow) char[sizeof(int)];
-    if (idptr == nullptr)
+    bFile.read((char*)&j, sizeof(int));
+    while (argv[2] != id && j != id)
     {
-        cout << "Not enough memory to allocate an array.";
-    }
-
-    while (argv[2] != id)
-    {
+        bFile.clear();
         bFile.seekp(i, ios::beg);
-        id = bFile.read(idptr, sizeof(int));
-        stoi(&id);
+        bFile.read((char*)&id, sizeof(int));
         i += 60;
     }
-    bFile.clear();
-    bFile.seekg(/*this is where the id is + 52*/, ios::beg);
 
+    if (j != id || argv[2] != id)
+    {
+        cout << "Employee ID " << argv[2] << " was not found." << endl;
+        bFile.close();
+        exit(1);
+    }
+
+    bFile.seekp(int(sizeof(empData) - sizeof(int) - sizeof(double)), ios::cur);
+    bFile.write((char*)&bonus, sizeof(double));
+    // what do I need to do to my write function?
+
+    cout << "Employee ID " << argv[2] << " has been updated." << endl;
 }
