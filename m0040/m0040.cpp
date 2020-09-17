@@ -76,6 +76,7 @@ bool applyBonus(fstream &bFile, int empID)
 {
     empData employee;
 
+    bFile.clear();
     bFile.seekg(0, ios::beg);
     bFile.clear();
     while (bFile.read((char*)&employee, sizeof(empData)))
@@ -83,13 +84,11 @@ bool applyBonus(fstream &bFile, int empID)
         bFile.clear();
         if (employee.id == empID)
         {
-            return false;
+            bFile.seekp(-int(sizeof(double)), ios::cur);
+            employee.bonus += 500;
+            bFile.write((char*)&employee.bonus, sizeof(double));
+            return true;
         }
     }
-
-    bFile.clear();
-    bFile.seekp(-int(sizeof(double)), ios::cur);
-    employee.bonus += 500;
-    bFile.write((char*)&employee.bonus, sizeof(double));
-    return true;
+    return false;
 }
