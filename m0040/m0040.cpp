@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
     int empID = stoi(argv[2]);
     fstream bFile;
     
-    bFile.open("data1.bin", ios::in | ios::out | ios::binary | ios::ate);
+    bFile.open(argv[1], ios::in | ios::out | ios::binary | ios::ate);
     if (!bFile.is_open())
     {
         cout << "Unable to open binary file: " << argv[1] << endl;
