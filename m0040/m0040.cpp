@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     if (argc != 3)
     {
         cout << "Usage: m0040.exe binaryData employeeID";
-        exit(1);
+        exit(0);
     }
 
     int empID = stoi(argv[2]);
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     if (!bFile.is_open())
     {
         cout << "Unable to open binary file: " << argv[1] << endl;
-        exit(1);
+        exit(0);
     }
 
     printFile(bFile);
