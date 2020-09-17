@@ -82,9 +82,9 @@ bool applyBonus(fstream &bFile, int empID)
         bFile.clear();
         if (employee.id == empID)
         {
-            bFile.seekp(-int(sizeof(double)), ios::cur);
+            bFile.seekp(-int(sizeof(empData)), ios::cur);
             employee.bonus += 500;
-            bFile.write((char*)&employee.bonus, sizeof(double));
+            bFile.write((char*)&employee, sizeof(empData));
             return true;
         }
     }
