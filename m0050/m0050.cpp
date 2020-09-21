@@ -17,13 +17,20 @@ struct employee
 
 int main(int argc, char* argv[])
 {
+    ifstream fin;
+    ofstream fout;
+    employee data;
+    vector<employee> empData;
+    vector<employee>::iterator it;
+    string header;
+
     if (argc != 4)
     {
-        cout << "Usage: m0050.exe inputCSVfile outputCSVfile sortMethod" << endl;
+        cout << "Usage: m0050.exe inputCSVfile outputCSVfile sortMethod" 
+             << endl;
         exit(0);
     }
 
-    ifstream fin;
     fin.open(argv[1]);
     if (!fin.is_open())
     {
@@ -31,7 +38,6 @@ int main(int argc, char* argv[])
         exit(0);
     }
 
-    ofstream fout;
     fout.open(argv[2]);
     if (!fout.is_open())
     {
@@ -40,15 +46,13 @@ int main(int argc, char* argv[])
         exit(0);
     }
 
-    employee data;
-    vector<employee> empData;
+    getline(fin, header);
+    fout << header << endl;
     while (fin >> data.id)
     {
         fin.ignore();
-        fin >> data.firstName;
-        fin.ignore();
-        fin >> data.lastName;
-        fin.ignore();
+        getline(fin, data.firstName, ',');
+        getline(fin, data.lastName, ',');
         fin >> data.salary;
         fin.ignore();
         fin >> data.bonus;
@@ -57,13 +61,13 @@ int main(int argc, char* argv[])
 
     // function call here to compare
 
-    for (int i = 0; i < empData.size(); i++)
+    for (auto d : empData)
     {
-        fout << empData.at(i).id << "," 
-            << empData.at(i).firstName << "," 
-            << empData.at(i).lastName << "," 
-            << empData.at(i).salary << "," 
-            << empData.at(i).bonus;
+        fout << d.id << ','
+            << d.firstName << ','
+            << d.lastName << ','
+            << d.salary << ','
+            << d.bonus << endl;
     }
 
     fin.close();
