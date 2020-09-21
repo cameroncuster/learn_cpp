@@ -1,6 +1,7 @@
 #include <vector>
 #include <fstream>
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <algorithm>
 
@@ -66,17 +67,18 @@ int main(int argc, char* argv[])
 
     if ((string)argv[3] == "-i")
     {
-        // use algorithm of sort to sort by id
+        sort(empData.begin(), empData.end(), sortById);
     }
     if ((string)argv[3] == "-n") 
     {
-        // function call to sort by name
+        sort(empData.begin(), empData.end(), sortByName);
     }
     if ((string)argv[3] == "-s") 
     {
-        // function call to sort by salary
+        sort(empData.begin(), empData.end(), sortBySalary);
     }
 
+    fout << showpoint << fixed << setprecision(2);
     for (auto d : empData)
     {
         fout << d.id << ','
@@ -110,14 +112,14 @@ bool sortById(employee emp1, employee emp2)
 
 bool sortByName(employee emp1, employee emp2)
 {
-    if (emp1.lastName == emp2.lastName)
+    if (strcmp((char*)&emp1.lastName, (char*)&emp2.lastName) == 0)
     {
-        if (emp1.firstName < emp2.firstName)
+        if (strcmp((char*)&emp1.firstName, (char*)&emp2.firstName) < 0)
         {
             return true;
         }
     }
-    if (emp1.lastName < emp2.lastName)
+    if (strcmp((char*)&emp1.lastName, (char*)&emp2.lastName) < 0)
     {
         return true;
     }
