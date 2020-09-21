@@ -15,6 +15,11 @@ struct employee
     double bonus;
 };
 
+// prototypes
+bool sortById(employee emp1, employee emp2);
+bool sortByName(employee emp1, employee emp2);
+bool sortBySalary(employee emp1, employee emp2);
+
 int main(int argc, char* argv[])
 {
     ifstream fin;
@@ -59,7 +64,18 @@ int main(int argc, char* argv[])
         empData.push_back(data);
     }
 
-    // function call here to compare
+    if ((string)argv[3] == "-i")
+    {
+        // use algorithm of sort to sort by id
+    }
+    if ((string)argv[3] == "-n") 
+    {
+        // function call to sort by name
+    }
+    if ((string)argv[3] == "-s") 
+    {
+        // function call to sort by salary
+    }
 
     for (auto d : empData)
     {
@@ -73,4 +89,49 @@ int main(int argc, char* argv[])
     fin.close();
     fout.close();
     return 0;
+}
+
+// ID compare function
+bool sortById(employee emp1, employee emp2)
+{
+    if (emp1.id < emp2.id)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+// Name compare function (last then first)
+bool sortByName(employee emp1, employee emp2)
+{
+    if (emp1.lastName == emp2.lastName)
+    {
+        if (emp1.firstName < emp2.firstName)
+        {
+            return true;
+        }
+    }
+    if (emp1.lastName < emp2.lastName)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool sortBySalary(employee emp1, employee emp2)
+{
+    if (emp1.salary > emp2.salary)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
