@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -16,15 +17,12 @@ struct employee
 
 int main(int argc, char* argv[])
 {
-    /*
-    if (argc == 3)
+    if (argc != 4)
     {
-        if (argv[1])
-        {
-            // figure out what to put here
-        }
+        cout << "Usage: m0050.exe inputCSVfile outputCSVfile sortMethod" << endl;
+        exit(0);
     }
-    */
+
     ifstream fin;
     fin.open(argv[1]);
     if (!fin.is_open())
@@ -61,7 +59,11 @@ int main(int argc, char* argv[])
 
     for (int i = 0; i < empData.size(); i++)
     {
-        fout << empData.at(i) << endl;
+        fout << empData.at(i).id << "," 
+            << empData.at(i).firstName << "," 
+            << empData.at(i).lastName << "," 
+            << empData.at(i).salary << "," 
+            << empData.at(i).bonus;
     }
 
     fin.close();
