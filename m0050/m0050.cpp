@@ -105,6 +105,9 @@ bool sortById(employee emp1, employee emp2)
 }
 
 // Name compare function (last then first)
+
+// USE STRING COMPARE AND FIX THIS GARBAGE FUNCTION
+
 bool sortByName(employee emp1, employee emp2)
 {
     if (emp1.lastName == emp2.lastName)
