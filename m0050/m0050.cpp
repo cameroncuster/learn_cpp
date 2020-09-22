@@ -79,10 +79,10 @@ int main(int argc, char* argv[])
     }
     else
     {
-        cout << "Invalid sort method:" << endl
-            << "-i sort by id" << endl
-            << "-n sort by name" << endl
-            << "-s sort by salary" << endl;
+        cout << "Invalid Sort Method:" << endl
+            << "-i - sort by id" << endl
+            << "-n - sort by name" << endl
+            << "-s - sort by salary" << endl;
         exit(0);
     }
 
