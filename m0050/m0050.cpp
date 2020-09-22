@@ -32,8 +32,19 @@ int main(int argc, char* argv[])
 
     if (argc != 4)
     {
-        cout << "Usage: m0050.exe inputCSVFile outputCSVFILE sortMethod" 
+        cout << 
+            "Usage: m0050.exe inputCSVFile outputCSVFILE sortMethod" 
              << endl;
+        exit(0);
+    }
+
+    if ((string)argv[3] != "-i" || (string)argv[3] != "-n" || 
+        (string)argv[3] != "-s")
+    {
+        cout << "Invalid Sort Method:" << endl
+            << "-i - sort by id" << endl
+            << "-n - sort by name" << endl
+            << "-s - sort by salary" << endl;
         exit(0);
     }
 
@@ -76,14 +87,6 @@ int main(int argc, char* argv[])
     if ((string)argv[3] == "-s") 
     {
         sort(empData.begin(), empData.end(), sortBySalary);
-    }
-    else
-    {
-        cout << "Invalid Sort Method:" << endl
-            << "-i - sort by id" << endl
-            << "-n - sort by name" << endl
-            << "-s - sort by salary" << endl;
-        exit(0);
     }
 
     fout << showpoint << fixed << setprecision(2);
