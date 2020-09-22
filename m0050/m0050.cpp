@@ -29,6 +29,7 @@ int main(int argc, char* argv[])
     vector<employee> empData;
     vector<employee>::iterator it;
     string header;
+    bool check = false;
 
     if (argc != 4)
     {
@@ -37,17 +38,7 @@ int main(int argc, char* argv[])
              << endl;
         exit(0);
     }
-    /*
-    if ((string)argv[3] != "-i" || (string)argv[3] != "-n" || 
-        (string)argv[3] != "-s")
-    {
-        cout << "Invalid Sort Method:" << endl
-            << "-i - sort by id" << endl
-            << "-n - sort by name" << endl
-            << "-s - sort by salary" << endl;
-        exit(0);
-    }
-    */
+ 
     fin.open(argv[1]);
     if (!fin.is_open())
     {
@@ -79,16 +70,19 @@ int main(int argc, char* argv[])
     if ((string)argv[3] == "-i")
     {
         sort(empData.begin(), empData.end(), sortById);
+        check = true;
     }
     if ((string)argv[3] == "-n") 
     {
         sort(empData.begin(), empData.end(), sortByName);
+        check = true;
     }
     if ((string)argv[3] == "-s") 
     {
         sort(empData.begin(), empData.end(), sortBySalary);
+        check = true;
     }
-    else
+    if (check == false)
     {
         cout << "Invalid Sort Method:" << endl
             << "-i - sort by id" << endl
