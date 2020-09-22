@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
     {
         cout << "Usage: m0050.exe inputCSVfile outputCSVfile sortMethod" 
              << endl;
-        exit(1);
+        exit(0);
     }
 
     fin.open(argv[1]);
