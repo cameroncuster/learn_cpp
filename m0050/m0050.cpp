@@ -77,6 +77,14 @@ int main(int argc, char* argv[])
     {
         sort(empData.begin(), empData.end(), sortBySalary);
     }
+    else
+    {
+        cout << "Invalid sort method:" << endl
+            << "-i sort by id" << endl
+            << "-n sort by name" << endl
+            << "-s sort by salary" << endl;
+        exit(0);
+    }
 
     fout << showpoint << fixed << setprecision(2);
     for (auto d : empData)
