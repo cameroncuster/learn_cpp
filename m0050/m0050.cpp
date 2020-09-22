@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
              << endl;
         exit(0);
     }
-
+    /*
     if ((string)argv[3] != "-i" || (string)argv[3] != "-n" || 
         (string)argv[3] != "-s")
     {
@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
             << "-s - sort by salary" << endl;
         exit(0);
     }
-
+    */
     fin.open(argv[1]);
     if (!fin.is_open())
     {
@@ -87,6 +87,14 @@ int main(int argc, char* argv[])
     if ((string)argv[3] == "-s") 
     {
         sort(empData.begin(), empData.end(), sortBySalary);
+    }
+    else
+    {
+        cout << "Invalid Sort Method:" << endl
+            << "-i - sort by id" << endl
+            << "-n - sort by name" << endl
+            << "-s - sort by salary" << endl;
+        exit(0);
     }
 
     fout << showpoint << fixed << setprecision(2);
