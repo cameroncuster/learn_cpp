@@ -130,25 +130,12 @@ bool sortById(employee emp1, employee emp2)
 // Name compare function (last then first)
 bool sortByName(employee emp1, employee emp2)
 {
-    if (emp1.lastName.compare(emp2.lastName) == 0)
+    if (emp1.lastName == emp2.lastName)
     {
-        if (emp1.firstName.compare(emp2.firstName) > 0)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return emp1.firstName < emp2.firstName;
     }
-    if (emp1.lastName.compare(emp2.lastName) > 0)
-    {
-        return false;
-    }
-    else
-    {
-        return true;
-    }
+    
+    return emp1.lastName < emp2.lastName;
 }
 
 // Salary compare function (highest to lowest)
