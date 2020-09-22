@@ -146,7 +146,7 @@ bool sortByName(employee emp1, employee emp2)
 // Salary compare function (highest to lowest)
 bool sortBySalary(employee emp1, employee emp2)
 {
-    if (emp1.salary > emp2.salary)
+    if (emp1.salary < emp2.salary)
     {
         return true;
     }
