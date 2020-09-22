@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
 
     if (argc != 4)
     {
-        cout << "Usage: m0050.exe inputCSVfile outputCSVfile sortMethod" 
+        cout << "Usage: m0050.exe inputCSVfile outputCSVFILE sortMethod" 
              << endl;
         exit(0);
     }
