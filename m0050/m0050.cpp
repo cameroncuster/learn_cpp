@@ -7,6 +7,7 @@
 
 using namespace std;
 
+// basic struct
 struct employee
 {
     int id;
@@ -23,14 +24,15 @@ bool sortBySalary(employee emp1, employee emp2);
 
 int main(int argc, char* argv[])
 {
+    // vars
     ifstream fin;
     ofstream fout;
     employee data;
     vector<employee> empData;
-    vector<employee>::iterator it;
     string header;
     bool check = false;
 
+    // check command line args
     if (argc != 4)
     {
         cout << 
@@ -39,6 +41,7 @@ int main(int argc, char* argv[])
         exit(0);
     }
  
+    // ensure files are open, exit if not
     fin.open(argv[1]);
     if (!fin.is_open())
     {
@@ -54,8 +57,11 @@ int main(int argc, char* argv[])
         exit(0);
     }
 
+    // get and output the header
     getline(fin, header);
     fout << header << endl;
+
+    // get data to fill vector with structures
     while (fin >> data.id)
     {
         fin.ignore();
@@ -67,6 +73,7 @@ int main(int argc, char* argv[])
         empData.push_back(data);
     }
 
+    // complete operation with error checking
     if ((string)argv[3] == "-i")
     {
         sort(empData.begin(), empData.end(), sortById);
@@ -91,6 +98,7 @@ int main(int argc, char* argv[])
         exit(0);
     }
 
+    // output with 2 decimals showing for salary
     fout << showpoint << fixed << setprecision(2);
     for (auto d : empData)
     {
