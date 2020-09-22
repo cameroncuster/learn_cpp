@@ -107,25 +107,26 @@ bool sortById(employee emp1, employee emp2)
 }
 
 // Name compare function (last then first)
-
-// USE STRING COMPARE AND FIX THIS GARBAGE FUNCTION
-
 bool sortByName(employee emp1, employee emp2)
 {
-    if (strcmp((char*)&emp1.lastName, (char*)&emp2.lastName) == 0)
+    if (emp1.lastName.compare(emp2.lastName) == 0)
     {
-        if (strcmp((char*)&emp1.firstName, (char*)&emp2.firstName) < 0)
+        if (emp1.firstName.compare(emp2.firstName) > 0)
+        {
+            return false;
+        }
+        else
         {
             return true;
         }
     }
-    if (strcmp((char*)&emp1.lastName, (char*)&emp2.lastName) < 0)
+    if (emp1.lastName.compare(emp2.lastName) > 0)
     {
-        return true;
+        return false;
     }
     else
     {
-        return false;
+        return true;
     }
 }
 
