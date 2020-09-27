@@ -9,6 +9,9 @@ using namespace std;
 // evaluated, the function that computes the derivative of the function and
 // an epsilon value for computing if it is close enough.
  
+double newtonApprox(double n, function<double(double)> f,
+    function<double(double)> fP, double epsilon);
+
 // prototypes for functions
 double f(double x);
 double fP(double x);
