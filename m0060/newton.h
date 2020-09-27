@@ -11,7 +11,3 @@ using namespace std;
  
 double newtonApprox(double n, function<double(double)> f,
     function<double(double)> fP, double epsilon);
-
-// prototypes for functions
-double f(double x);
-double fP(double x);
