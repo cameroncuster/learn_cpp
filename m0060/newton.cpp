@@ -2,6 +2,7 @@
 #include <cmath>
 
 // write the function named newtonApprox here
+// the function
 
 double newtonApprox(double n, function<double(double)> f, 
     function<double(double)> fP, double epsilon)
