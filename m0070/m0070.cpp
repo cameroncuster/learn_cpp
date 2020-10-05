@@ -130,27 +130,17 @@ void outputEmployee( ofstream &out, vector<employee>::iterator it )
 
 bool compareID( employee &lhs,  employee &rhs )
 {
-    if( lhs.getID( ) < rhs.getID( ) )
-    {
-        return true;
-    }
-    return false;
+    return lhs.getID( ) < rhs.getID( );
 }
 
 bool compareName( employee &lhs,  employee &rhs )
 {
-    if( lhs.getFirstName( ) < rhs.getFirstName( ) )
-    {
-        return true;
-    }
-    return false;
+    if( lhs.getFirstName( ) == rhs.getFirstName( ) )
+        return lhs.getLastName( ) > rhs.getLastName( );
+    return lhs.getFirstName( ) > rhs.getFirstName( );
 }
 
 bool compareSalary( employee &lhs,  employee &rhs )
 {
-    if( lhs.getSalary( ) > rhs.getSalary( ) )
-    {
-        return true;
-    }
-    return false;
+    return lhs.getSalary( ) > rhs.getSalary( );
 }
