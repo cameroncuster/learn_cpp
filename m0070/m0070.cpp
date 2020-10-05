@@ -26,7 +26,7 @@ int main(int argc, char **argv)
         allEmp.push_back(empD);
     }
 
-    
+  
     method = argv[3];
     if( method == "-i" )
         sort(allEmp.begin(), allEmp.end(), compareID);
@@ -38,6 +38,7 @@ int main(int argc, char **argv)
 
     fout << fixed << showpoint << setprecision( 2 );
     fout << headers << endl;
+    it = allEmp.begin( );
     for( it = allEmp.begin( ); it != allEmp.end( ); it++ )
     {
         outputEmployee( fout, it );
@@ -105,14 +106,11 @@ bool inputEmployee(istream &in, employee &anEmployee)
 
         // insert your member function calls to fill the employee object or
         // change the data with the object
-        if( anEmployee.setID( id ) == false ||
-            anEmployee.setFirstName( fname ) == false ||
-            anEmployee.setLastName( lname ) == false ||
-            anEmployee.setSalary( annualSalary ) == false ||
-            anEmployee.setBonus( yearlyBonus ) == false )
-        {
-            return false;
-        }
+        anEmployee.setID( id );
+        anEmployee.setFirstName( fname );
+        anEmployee.setLastName( lname );
+        anEmployee.setSalary( annualSalary );
+        anEmployee.setBonus( yearlyBonus );
 
         return true;
     }
@@ -127,12 +125,13 @@ void outputEmployee( ofstream &out, vector<employee>::iterator it )
         << it->getFirstName( ) << ','
         << it->getLastName( ) << ','
         << it->getSalary( ) << ','
-        << it->getBonus( ) << ',';
+        << it->getBonus( ) << ','
+        << endl;
 }
 
 bool compareID( employee &lhs,  employee &rhs )
 {
-    if( lhs.getID( ) > rhs.getID( ) )
+    if( lhs.getID( ) < rhs.getID( ) )
     {
         return true;
     }
@@ -141,7 +140,7 @@ bool compareID( employee &lhs,  employee &rhs )
 
 bool compareName( employee &lhs,  employee &rhs )
 {
-    if( lhs.getFirstName( ) > rhs.getFirstName( ) )
+    if( lhs.getFirstName( ) < rhs.getFirstName( ) )
     {
         return true;
     }
@@ -150,7 +149,7 @@ bool compareName( employee &lhs,  employee &rhs )
 
 bool compareSalary( employee &lhs,  employee &rhs )
 {
-    if( lhs.getSalary( ) > rhs.getSalary( ) )
+    if( lhs.getSalary( ) < rhs.getSalary( ) )
     {
         return true;
     }
