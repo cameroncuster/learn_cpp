@@ -123,7 +123,11 @@ bool inputEmployee(istream &in, employee &anEmployee)
 void outputEmployee( ofstream &out, vector<employee>::iterator it )
 {
     // output a single employee's data with an endline
-    
+    out << it->getID( ) << ','
+        << it->getFirstName( ) << ','
+        << it->getLastName( ) << ','
+        << it->getSalary( ) << ','
+        << it->getBonus( ) << ',';
 }
 
 bool compareID( employee &lhs,  employee &rhs )
