@@ -33,7 +33,7 @@ employee::~employee( )
 
 bool employee::setID( int newID )
 {
-    if( id > 0 )
+    if( newID > 0 )
     {
         id = newID;
         return true;
