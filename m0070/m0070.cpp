@@ -125,8 +125,7 @@ void outputEmployee( ofstream &out, vector<employee>::iterator it )
         << it->getFirstName( ) << ','
         << it->getLastName( ) << ','
         << it->getSalary( ) << ','
-        << it->getBonus( ) << ','
-        << endl;
+        << it->getBonus( ) << endl;
 }
 
 bool compareID( employee &lhs,  employee &rhs )
