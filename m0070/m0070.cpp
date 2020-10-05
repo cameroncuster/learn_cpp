@@ -148,7 +148,7 @@ bool compareName( employee &lhs,  employee &rhs )
 
 bool compareSalary( employee &lhs,  employee &rhs )
 {
-    if( lhs.getSalary( ) < rhs.getSalary( ) )
+    if( lhs.getSalary( ) > rhs.getSalary( ) )
     {
         return true;
     }
