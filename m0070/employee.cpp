@@ -93,7 +93,7 @@ double employee::getSalary( )
 
 bool employee::setBonus( double theNewBonus )
 {
-    if( theNewBonus > 0.0 )
+    if( theNewBonus >= 0.0 )
     {
         bonus = theNewBonus;
         return true;
