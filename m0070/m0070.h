@@ -20,5 +20,4 @@ bool compareID( employee &lhs, employee &rhs );
 bool compareName( employee &lhs, employee &rhs );
 bool compareSalary( employee &lhs, employee &rhs );
 
-
 #endif

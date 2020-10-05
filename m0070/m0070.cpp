@@ -105,6 +105,14 @@ bool inputEmployee(istream &in, employee &anEmployee)
 
         // insert your member function calls to fill the employee object or
         // change the data with the object
+        if( anEmployee.setID( id ) == false ||
+            anEmployee.setFirstName( fname ) == false ||
+            anEmployee.setLastName( lname ) == false ||
+            anEmployee.setSalary( annualSalary ) == false ||
+            anEmployee.setBonus( yearlyBonus ) == false )
+        {
+            return false;
+        }
 
         return true;
     }
@@ -115,20 +123,32 @@ bool inputEmployee(istream &in, employee &anEmployee)
 void outputEmployee( ofstream &out, vector<employee>::iterator it )
 {
     // output a single employee's data with an endline
-
+    
 }
 
-bool compareID( employee &lhs,  employee &rhs)
+bool compareID( employee &lhs,  employee &rhs )
 {
-    return true;
+    if( lhs.getID( ) < rhs.getID( ) )
+    {
+        return true;
+    }
+    return false;
 }
 
-bool compareName( employee &lhs,  employee &rhs)
+bool compareName( employee &lhs,  employee &rhs )
 {
-    return true;
+    if( lhs.getFirstName( ) < rhs.getFirstName( ) )
+    {
+        return true;
+    }
+    return false;
 }
 
-bool compareSalary( employee &lhs,  employee &rhs)
+bool compareSalary( employee &lhs,  employee &rhs )
 {
-    return true;
+    if( lhs.getSalary( ) < rhs.getSalary( ) )
+    {
+        return true;
+    }
+    return false;
 }
