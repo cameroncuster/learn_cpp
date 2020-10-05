@@ -88,6 +88,7 @@ void openFiles( ifstream &fin, ofstream &fout, char **argv )
     }
 }
 
+
 bool inputEmployee(istream &in, employee &anEmployee)
 {
     int id;

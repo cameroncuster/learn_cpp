@@ -30,3 +30,78 @@ employee::~employee( )
 {
 
 }
+
+bool employee::setID( int newID )
+{
+    if( id > 0 )
+    {
+        id = newID;
+        return true;
+    }
+    return false;
+}
+
+int employee::getID( )
+{
+    return id;
+}
+
+bool employee::setFirstName( string newFname )
+{
+    if( !newFname.empty( ) )
+    {
+        firstName = newFname;
+        return true;
+    }
+    return false;
+}
+
+string employee::getFirstName( )
+{
+    return firstName;
+}
+
+bool employee::setLastName( string newLname )
+{
+    if( !newLname.empty( ) )
+    {
+        lastName = newLname;
+        return true;
+    }
+    return false;
+}
+
+string employee::getLastName( )
+{
+    return lastName;
+}
+
+bool employee::setSalary( double theNewSalary )
+{
+    if( theNewSalary > 0.0 )
+    {
+        salary = theNewSalary;
+        return true;
+    }
+    return false;
+}
+
+double employee::getSalary( )
+{
+    return salary;
+}
+
+bool employee::setBonus( double theNewBonus )
+{
+    if( theNewBonus > 0.0 )
+    {
+        bonus = theNewBonus;
+        return true;
+    }
+    return false;
+}
+
+double employee::getBonus( )
+{
+    return bonus;
+}

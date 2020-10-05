@@ -10,7 +10,18 @@ class employee
         employee( int theID, string fname, string lname, double theSalary,
                   double theBonus );
         ~employee( );
-
+        
+        // function protoypes
+        bool setID( int newID );
+        int getID( );
+        bool setFirstName( string newFname );
+        string getFirstName( );
+        bool setLastName( string newLname );
+        string getLastName( );
+        bool setSalary( double theNewSalary );
+        double getSalary( );
+        bool setBonus( double theNewBonus );
+        double getBonus( );
 
 
     private:
