@@ -9,6 +9,7 @@ class employee
         employee( );
         employee( int theID, string fname, string lname, double theSalary,
                   double theBonus );
+        employee( string fname, string lname); // can i create multiple instances?
         ~employee( );
         
         // function protoypes

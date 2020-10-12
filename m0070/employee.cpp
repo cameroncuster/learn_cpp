@@ -7,6 +7,13 @@ employee::employee( )
     salary = 0.0;
     bonus = 0.0;
 }
+
+employee::employee( string fname, string lname )
+{
+    firstName = fname;
+    lastName = lname;
+}
+
 employee::employee( int theID, string fname, string lname, double theSalary,
                     double theBonus )
 {
