@@ -1,5 +1,5 @@
 #include "sortedSingle.h"
-
+/*
 bool sortedSingle::remove( int item )
 {
     if( empty( ) == true )
@@ -31,3 +31,4 @@ void sortedSingle::clear( )
         temp = headptr;
     }
 }
+*/

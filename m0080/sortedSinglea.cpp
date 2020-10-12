@@ -33,12 +33,13 @@ bool sortedSingle::find( int item )
     {
         return false;
     }
-    while( curr->next != nullptr )
+    while( curr != nullptr )
     {
         if( curr->theItem == item )
         {
             return true;
         }
+        curr = curr->next;
     }
     return false;
 }
