@@ -16,7 +16,7 @@ bool sortedSingle::empty( )
 
 int sortedSingle::size( )
 {
-    int count = 1;
+    int count = 0;
     node *curr = headptr;
     while( curr != nullptr )
     {
