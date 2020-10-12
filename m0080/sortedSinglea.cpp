@@ -16,9 +16,13 @@ bool sortedSingle::empty( )
 
 int sortedSingle::size( )
 {
+    if( headptr == nullptr )
+    {
+        return 0;
+    }
     int count = 0;
     node *curr = headptr;
-    while( curr->next != nullptr )
+    while( curr != nullptr )
     {
         curr = curr->next;
         count++;
