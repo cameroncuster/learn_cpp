@@ -18,12 +18,12 @@ TEST_CASE( "constructor" )
     sortedSingle listempty;
 
     // test empty list
-    REQUIRE( listempty.empty( ) == true );
-    REQUIRE( listempty.size( ) == 0 );
+    CHECK( listempty.empty( ) == true );
+    CHECK( listempty.size( ) == 0 );
 
     // test list of values
-    REQUIRE( list1.empty( ) == false );
-    REQUIRE( list1.size( ) == 5 );
+    CHECK( list1.empty( ) == false );
+    CHECK( list1.size( ) == 5 );
 }
 
 TEST_CASE( "destructor" )
@@ -50,6 +50,46 @@ TEST_CASE( "destructor" )
     REQUIRE( list1.empty( ) == true );
     REQUIRE( list1.size( ) == 0 );
     */
+}
+
+TEST_CASE( "empty" )
+{
+    // create a list of values
+    sortedSingle list1;
+    list1.insert( 10 );
+    list1.insert( 30 );
+    list1.insert( 20 );
+    list1.insert( 50 );
+    list1.insert( 40 );
+
+    // empty list
+    sortedSingle listempty;
+
+    // test an empty list
+    REQUIRE( listempty.empty( ) == true );
+
+    // test a list of values for true and false returns with boundry testing
+    REQUIRE( list1.empty( ) == false );
+}
+
+TEST_CASE( "size" )
+{
+    // create a list of values
+    sortedSingle list1;
+    list1.insert( 10 );
+    list1.insert( 30 );
+    list1.insert( 20 );
+    list1.insert( 50 );
+    list1.insert( 40 );
+
+    // empty list
+    sortedSingle listempty;
+
+    // test an empty list
+    REQUIRE( listempty.size( ) == 0 );
+
+    // test a list of values for true and false returns with boundry testing
+    REQUIRE( list1.size( ) == 5 );
 }
 
 TEST_CASE( "find" )
