@@ -75,15 +75,35 @@ TEST_CASE( "find" )
     REQUIRE( list1.find( 10 ) == true );
     REQUIRE( list1.find( 50 ) == true);
     REQUIRE( list1.find( 30 ) == true );
-
 }
-/*
+
 TEST_CASE( "retrievePosition" )
 {
+
+    // create a list of values
     sortedSingle list1;
-    REQUIRE( list1.retrievePosition( 10 ) == 0 );
+    list1.insert( 10 );
+    list1.insert( 30 );
+    list1.insert( 20 );
+    list1.insert( 50 );
+    list1.insert( 40 );
+
+    // empty list
+    sortedSingle listempty;
+
+    // test an empty list
+    REQUIRE( listempty.retrievePosition( 10 ) == 0 );
+
+    // test a list of values for a location or 0 if not found in the list
+    REQUIRE( list1.retrievePosition( 0 ) == 0 );
+    REQUIRE( list1.retrievePosition( 10 ) == 1 );
+    REQUIRE( list1.retrievePosition( 20 ) == 2 );
+    REQUIRE( list1.retrievePosition( 30 ) == 3 );
+    REQUIRE( list1.retrievePosition( 40 ) == 4 );
+    REQUIRE( list1.retrievePosition( 50 ) == 5 );
+    REQUIRE( list1.retrievePosition( 60 ) == 0 );
 }
-*/
+
 /*
 TEST_CASE( "insert" )
 {
