@@ -1,8 +1,16 @@
 #include "sortedSingle.h"
+using std::ostream;
+using std::string;
+using std::nothrow;
 
 bool sortedSingle::insert( int item )
 {
     node *newItem;
+    newItem = new ( nothrow ) node;
+    if( newItem == nullptr )
+    {
+        return false;
+    }
     node *prev = headptr;
     node *curr = headptr;
     if( empty( ) == true )
@@ -23,9 +31,14 @@ bool sortedSingle::insert( int item )
     return false;
 }
 
-void sortedSingle::print( ostream &out, string seperator=", " )
+void sortedSingle::print( ostream &out, string seperator )
 {
     node *temp;
+    temp = new ( nothrow ) node;
+    if( temp == nullptr )
+    {
+        return;
+    }
     if( empty( ) == true )
     {
         return;
