@@ -55,4 +55,3 @@ class sortedSingle
     };
     node *headptr;      /*!< The location of the first node in the list */
 };
-

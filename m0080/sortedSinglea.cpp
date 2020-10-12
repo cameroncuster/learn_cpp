@@ -62,12 +62,7 @@ int sortedSingle::retrievePosition( int item )
     return 0;
 }
 
-void sortedSingle::clear( )
-{
-    // free all the nodes in the linked list and restore head ptr to nullptr
-}
-
 sortedSingle::~sortedSingle( )
 {
-    sortedSingle::clear( );
+    clear( );
 }

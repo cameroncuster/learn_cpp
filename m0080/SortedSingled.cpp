@@ -4,6 +4,3 @@
  * @brief   This file is reserved for future use.  Do not edit.
  *****************************************************************************/
 #include "sortedSingle.h"
-
-
-
