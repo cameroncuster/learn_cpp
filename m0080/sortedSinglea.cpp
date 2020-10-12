@@ -18,7 +18,7 @@ int sortedSingle::size( )
 {
     int count = 0;
     node *curr = headptr;
-    while( curr != nullptr )
+    while( curr->next != nullptr )
     {
         curr = curr->next;
         count++;

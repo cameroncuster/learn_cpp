@@ -12,3 +12,10 @@ TEST_CASE( "constructor" )
     REQUIRE( list1.empty( ) == true );
     REQUIRE( list1.size( ) == 0 );
 }
+
+TEST_CASE( "destructor" )
+{
+    sortedSingle list1;
+    REQUIRE( list1.empty( ) == true );
+    REQUIRE( list1.size( ) == 0 );
+}
