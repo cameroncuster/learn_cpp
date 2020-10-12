@@ -16,10 +16,6 @@ bool sortedSingle::empty( )
 
 int sortedSingle::size( )
 {
-    if( headptr == nullptr )
-    {
-        return 0;
-    }
     int count = 0;
     node *curr = headptr;
     while( curr != nullptr )
@@ -32,6 +28,10 @@ int sortedSingle::size( )
 
 bool sortedSingle::find( int item )
 {
+    if( empty( ) == true )
+    {
+        return false;
+    }
     node *curr = headptr;
     while( curr->next != nullptr )
     {
@@ -45,6 +45,10 @@ bool sortedSingle::find( int item )
 
 int sortedSingle::retrievePosition( int item )
 {
+    if( empty( ) == true )
+    {
+        return 0;
+    }
     int count = 1;
     node *curr = headptr;
     while( curr->next != nullptr )
