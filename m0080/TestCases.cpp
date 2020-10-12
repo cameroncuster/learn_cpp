@@ -70,7 +70,7 @@ TEST_CASE( "find" )
 
     // test a list of values for true and false returns with boundry testing
     REQUIRE( list1.find( 5 ) == false );
-    REQUIRE( list1.find( 50 ) == false );
+    REQUIRE( list1.find( 60 ) == false );
     REQUIRE( list1.find( 35 ) == false );
     REQUIRE( list1.find( 10 ) == true );
     REQUIRE( list1.find( 50 ) == true);
