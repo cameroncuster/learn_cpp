@@ -52,12 +52,13 @@ int sortedSingle::retrievePosition( int item )
     {
         return 0;
     }
-    while( curr->next != nullptr )
+    while( curr != nullptr )
     {
         if( curr->theItem == item )
         {
             return count;
         }
+        curr = curr->next;
         count++;
     }
     return 0;
