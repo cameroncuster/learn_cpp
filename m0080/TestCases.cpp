@@ -174,12 +174,12 @@ TEST_CASE( "insert" )
     REQUIRE( list1.find( 50 ) == true );
     REQUIRE( list1.retrievePosition( 50 ) == 4 );
     CHECK( list1.empty( ) == false );
-    CHECK( list1.size( ) == 3 );
+    CHECK( list1.size( ) == 4 );
 
     // insert 40 and verify
     REQUIRE( list1.insert( 40 ) == true );
     REQUIRE( list1.find( 40 ) == true );
     REQUIRE( list1.retrievePosition( 40 ) == 4 );
     CHECK( list1.empty( ) == false );
-    CHECK( list1.size( ) == 3 );
+    CHECK( list1.size( ) == 5 );
 }

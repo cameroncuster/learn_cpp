@@ -40,6 +40,11 @@ bool sortedSingle::insert( int item )
             newItem->next = curr;
             return true;
         }
+        if( curr->next == nullptr && curr->theItem < item )
+        {
+            curr->next = newItem;
+            return true;
+        }
         prev = curr;
         curr = curr->next;
     }
