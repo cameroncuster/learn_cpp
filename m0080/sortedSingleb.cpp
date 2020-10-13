@@ -2,7 +2,7 @@
 using std::ostream;
 using std::string;
 using std::nothrow;
-/*
+
 bool sortedSingle::insert( int item )
 {
     node *newItem;
@@ -11,6 +11,8 @@ bool sortedSingle::insert( int item )
     {
         return false;
     }
+    newItem->theItem = item;
+    newItem->next = nullptr;
     node *prev = headptr;
     node *curr = headptr;
     if( empty( ) == true )
@@ -18,19 +20,32 @@ bool sortedSingle::insert( int item )
         headptr = newItem;
         return true;
     }
-    while(  curr->next != nullptr )
+    if( size( ) == 1 )
+    {
+        if( curr->theItem > item )
+        {
+            headptr = newItem;
+        }
+        else
+        {
+            curr->next = newItem;
+        }
+        return true;
+    }
+    while( curr != nullptr )
     {
         if( prev->theItem < item && item < curr->theItem )
         {
-            newItem->theItem = item;
             prev->next = newItem;
-            newItem->next = curr->next;
+            newItem->next = curr;
             return true;
         }
+        prev = curr;
+        curr = curr->next;
     }
     return false;
 }
-
+/*
 void sortedSingle::print( ostream &out, string seperator )
 {
     node *temp;

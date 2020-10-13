@@ -144,7 +144,6 @@ TEST_CASE( "retrievePosition" )
     REQUIRE( list1.retrievePosition( 60 ) == 0 );
 }
 
-/*
 TEST_CASE( "insert" )
 {
     sortedSingle list1;
@@ -152,19 +151,35 @@ TEST_CASE( "insert" )
     // insert 10 and verify
     REQUIRE( list1.insert( 10 ) == true );
     REQUIRE( list1.find( 10 ) == true );
+    REQUIRE( list1.retrievePosition( 10 ) == 1 );
     CHECK( list1.empty( ) == false );
     CHECK( list1.size( ) == 1 );
 
     // insert 30 and verify
     REQUIRE( list1.insert( 30 ) == true );
     REQUIRE( list1.find( 30 ) == true );
+    REQUIRE( list1.retrievePosition( 30 ) == 2 );
     CHECK( list1.empty( ) == false );
     CHECK( list1.size( ) == 2 );
 
     // insert 20 and verify
     REQUIRE( list1.insert( 20 ) == true );
     REQUIRE( list1.find( 20 ) == true );
+    REQUIRE( list1.retrievePosition( 20 ) == 2 );
+    CHECK( list1.empty( ) == false );
+    CHECK( list1.size( ) == 3 );
+
+    // insert 50 and verify
+    REQUIRE( list1.insert( 50 ) == true );
+    REQUIRE( list1.find( 50 ) == true );
+    REQUIRE( list1.retrievePosition( 50 ) == 4 );
+    CHECK( list1.empty( ) == false );
+    CHECK( list1.size( ) == 3 );
+
+    // insert 40 and verify
+    REQUIRE( list1.insert( 40 ) == true );
+    REQUIRE( list1.find( 40 ) == true );
+    REQUIRE( list1.retrievePosition( 40 ) == 4 );
     CHECK( list1.empty( ) == false );
     CHECK( list1.size( ) == 3 );
 }
-*/
