@@ -51,7 +51,7 @@ bool sortedSingle::insert( int item )
     return false;
 }
 /*
-void sortedSingle::print( ostream &out, string seperator )
+void sortedSingle::print( ostream &out )
 {
     node *temp;
     temp = new ( nothrow ) node;

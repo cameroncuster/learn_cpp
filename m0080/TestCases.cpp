@@ -183,3 +183,29 @@ TEST_CASE( "insert" )
     CHECK( list1.empty( ) == false );
     CHECK( list1.size( ) == 5 );
 }
+
+TEST_CASE( "print" )
+{
+    // string stream
+    ostringstream soutempty;
+    ostringstream sout1;
+
+    // list of values
+    sortedSingle list1;
+    list1.insert( 10 );
+    list1.insert( 30 );
+    list1.insert( 20 );
+    list1.insert( 50 );
+    list1.insert( 40 );
+
+    // empty list
+    sortedSingle listempty;
+
+    // check empty
+    listempty.print( soutempty );
+    REQUIRE( soutempty.str( ) == "" );
+
+    //check list of values
+    list1.print( sout1 );
+    REQUIRE( sout1.str( ) == "10, 20, 30, 40, 50" );
+}
