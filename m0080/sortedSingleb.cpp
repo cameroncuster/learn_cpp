@@ -1,7 +1,10 @@
 #include "sortedSingle.h"
+#include <sstream>
+#include <string>
 using std::ostream;
 using std::string;
 using std::nothrow;
+using namespace std;
 
 bool sortedSingle::insert( int item )
 {
@@ -50,15 +53,10 @@ bool sortedSingle::insert( int item )
     }
     return false;
 }
-/*
-void sortedSingle::print( ostream &out )
+
+void sortedSingle::print( ostream &out, string seperator )
 {
-    node *temp;
-    temp = new ( nothrow ) node;
-    if( temp == nullptr )
-    {
-        return;
-    }
+    node *temp = headptr;
     if( empty( ) == true )
     {
         return;
@@ -71,4 +69,3 @@ void sortedSingle::print( ostream &out )
     }
     out << temp->theItem;
 }
-*/
