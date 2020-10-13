@@ -37,6 +37,11 @@ bool sortedSingle::insert( int item )
     }
     while( curr != nullptr )
     {
+        if( curr->theItem == item )
+        {
+            prev->next = newItem;
+            newItem->next = curr;
+        }
         if( prev->theItem < item && item < curr->theItem )
         {
             prev->next = newItem;
