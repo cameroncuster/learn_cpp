@@ -17,6 +17,11 @@ bool sortedSingle::remove( int item )
         }
         return false;
     }
+    if( curr->theItem == item )
+    {
+        headptr = curr->next;
+        return true;
+    }
     while( curr != nullptr )
     {
         if( curr->theItem == item )
