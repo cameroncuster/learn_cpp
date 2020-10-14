@@ -5,7 +5,7 @@ using std::ostream;
 using std::string;
 using std::nothrow;
 using namespace std;
-
+/*
 bool sortedSingle::insert( int item )
 {
     node *newItem;
@@ -81,4 +81,4 @@ void sortedSingle::print( ostream &out, string seperator )
         temp = temp->next;
     }
     out << temp->theItem;
-}
+}*/
