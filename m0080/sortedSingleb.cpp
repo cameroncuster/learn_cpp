@@ -16,61 +16,27 @@ bool sortedSingle::insert( int item )
     }
     newItem->theItem = item;
     newItem->next = nullptr;
-    node *prev = headptr;
-    node *curr = headptr;
     if( empty( ) == true )
     {
         headptr = newItem;
         return true;
     }
-    if( size( ) == 1 )
+    node *prev = headptr;
+    node *curr = headptr;
+    if( item <= curr->theItem )
     {
-        if( curr->theItem > item )
-        {
-            headptr = newItem;
-            newItem->next = curr;
-        }
-        else
-        {
-            curr->next = newItem;
-        }
-        return true;
-    }
-    if( item < curr->theItem )
-    {
-        headptr = newItem;
         newItem->next = curr;
+        headptr = newItem;
         return true;
     }
-    while( curr != nullptr )
+    while( curr != nullptr && curr->theItem <= newItem->theItem )
     {
-        if( curr->theItem == item )
-        {
-            if( curr == headptr )
-            {
-                headptr = newItem;
-                newItem->next = curr;
-                return true;
-            }
-            prev->next = newItem;
-            newItem->next = curr;
-            return true;
-        }
-        if( prev->theItem < item && item < curr->theItem )
-        {
-            prev->next = newItem;
-            newItem->next = curr;
-            return true;
-        }
-        if( curr->next == nullptr && curr->theItem < item )
-        {
-            curr->next = newItem;
-            return true;
-        }
         prev = curr;
         curr = curr->next;
     }
-    return false;
+    prev->next = newItem;
+    newItem->next = curr;
+    return true ;
 }
 
 void sortedSingle::print( ostream &out, string seperator )
