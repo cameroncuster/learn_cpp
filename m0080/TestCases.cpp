@@ -540,30 +540,66 @@ TEST_CASE( "insert" )
         CHECK( sout3.str( ) == "-3, -3, -3, -2, -1, 2, 3, 3, 3" );
     }
 }
-/*
+
 TEST_CASE( "print" )
 {
-    // string stream
-    ostringstream soutempty;
-    ostringstream sout1;
-
-    // list of values
+    // lists
     sortedSingle list1;
-    list1.insert( 10 );
-    list1.insert( 30 );
-    list1.insert( 20 );
-    list1.insert( 50 );
-    list1.insert( 40 );
 
-    // empty list
-    sortedSingle listempty;
+    // string streams
+    stringstream sout1;
 
-    // check empty
-    listempty.print( soutempty );
-    REQUIRE( soutempty.str( ) == "" );
+    SECTION( "empty" )
+    {
+        list1.print( sout1 );
+        REQUIRE( sout1.str( ) == "" );
+    }
 
-    //check list of values
-    list1.print( sout1 );
-    REQUIRE( sout1.str( ) == "10, 20, 30, 40, 50" );
+    CHECK( list1.insert( 0 ) == true );
+
+    SECTION( "values" )
+    {
+        list1.print( sout1 );
+        REQUIRE( sout1.str( ) == "0" );
+    }
+
+    CHECK( list1.insert( 1 ) == true );
+
+    SECTION( "values" )
+    {
+        list1.print( sout1 );
+        REQUIRE( sout1.str( ) == "0, 1" );
+    }
+
+    CHECK( list1.insert( 2 ) == true );
+
+    SECTION( "values" )
+    {
+        list1.print( sout1 );
+        REQUIRE( sout1.str( ) == "0, 1, 2" );
+    }
+
+    CHECK( list1.insert( 3 ) == true );
+
+    SECTION( "values" )
+    {
+        list1.print( sout1 );
+        REQUIRE( sout1.str( ) == "0, 1, 2, 3" );
+    }
+
+    CHECK( list1.insert( 4 ) == true );
+
+    SECTION( "values" )
+    {
+        list1.print( sout1 );
+        REQUIRE( sout1.str( ) == "0, 1, 2, 3, 4" );
+    }
+
+    CHECK( list1.insert( 5 ) == true );
+
+    SECTION( "values" )
+    {
+        list1.print( sout1 );
+        REQUIRE( sout1.str( ) == "0, 1, 2, 3, 4, 5" );
+    }
 }
-*/

@@ -36,6 +36,12 @@ bool sortedSingle::insert( int item )
         }
         return true;
     }
+    if( item < curr->theItem )
+    {
+        headptr = newItem;
+        newItem->next = curr;
+        return true;
+    }
     while( curr != nullptr )
     {
         if( curr->theItem == item )
@@ -66,7 +72,7 @@ bool sortedSingle::insert( int item )
     }
     return false;
 }
-/*
+
 void sortedSingle::print( ostream &out, string seperator )
 {
     node *temp = headptr;
@@ -81,4 +87,4 @@ void sortedSingle::print( ostream &out, string seperator )
         temp = temp->next;
     }
     out << temp->theItem;
-}*/
+}
