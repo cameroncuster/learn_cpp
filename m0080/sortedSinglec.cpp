@@ -8,29 +8,20 @@ bool sortedSingle::remove( int item )
     {
         return false;
     }
-    if( size( ) == 1 )
-    {
-        if( curr->theItem == item )
-        {
-            headptr = nullptr;
-            return true;
-        }
-        return false;
-    }
     if( curr->theItem == item )
     {
         headptr = curr->next;
         return true;
     }
-    while( curr != nullptr )
+    while( curr != nullptr && curr->theItem != item )
     {
-        if( curr->theItem == item )
-        {
-            prev->next = curr->next;
-            return true;
-        }
         prev = curr;
         curr = curr->next;
+    }
+    if( curr->theItem == item )
+    {
+        prev->next = curr->next;
+        return true;
     }
     return false;
 }
