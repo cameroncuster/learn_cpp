@@ -31,7 +31,7 @@ TEST_CASE( "destructor" )
 {
     sortedSingle list1;
 
-    SECTION( "close empty list" )
+    SECTION( "empty list" )
     {
         REQUIRE( list1.empty( ) == true );
         REQUIRE( list1.size( ) == 0 );
