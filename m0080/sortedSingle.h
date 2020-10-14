@@ -22,7 +22,7 @@ class sortedSingle
 {
     public:
 
-    // do not write.
+    // do not write. under any circumstances do not write
     sortedSingle( sortedSingle &l );
 
     // file sortedSinglea.cpp
