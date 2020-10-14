@@ -675,3 +675,28 @@ TEST_CASE( "remove" )
         REQUIRE( list1.size( ) == 4 );
     }
 }
+
+TEST_CASE( "clear" )
+{
+    sortedSingle list1;
+    ostringstream sout1;
+
+    list1.clear( );
+    list1.print( sout1 );
+
+    SECTION( "empty" )
+    {
+        REQUIRE( sout1.str( ) == "" );
+    }
+
+    CHECK( list1.insert( 10 ) == true );
+    CHECK( list1.insert( 20 ) == true );
+    CHECK( list1.insert( 30 ) == true );
+    CHECK( list1.insert( 40 ) == true );
+    CHECK( list1.insert( 50 ) == true );
+
+    SECTION( "list of values" )
+    {
+        REQUIRE( sout1.str( ) == "" );
+    }
+}
