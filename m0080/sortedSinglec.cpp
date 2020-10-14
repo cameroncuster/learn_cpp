@@ -1,23 +1,32 @@
 #include "sortedSingle.h"
-/*
+
 bool sortedSingle::remove( int item )
 {
+    node *prev = headptr;
+    node *curr = headptr;
     if( empty( ) == true )
     {
         return false;
     }
-    node *prev = headptr;
-    node *curr = headptr;
-    while( curr->theItem != item && curr->next != nullptr )
+    if( size( ) == 1 )
     {
+        if( curr->theItem == item )
+        {
+            headptr = nullptr;
+            return true;
+        }
+        return false;
+    }
+    while( curr != nullptr )
+    {
+        if( curr->theItem == item )
+        {
+            prev->next = curr->next;
+            return true;
+        }
         prev = curr;
         curr = curr->next;
     }
-    if( curr->theItem == item )
-    {
-        prev->next = curr->next;
-    }
-    delete curr;
     return false;
 }
 
@@ -32,4 +41,3 @@ void sortedSingle::clear( )
     }
     delete headptr;
 }
-*/
