@@ -603,3 +603,75 @@ TEST_CASE( "print" )
         REQUIRE( sout1.str( ) == "0, 1, 2, 3, 4, 5" );
     }
 }
+
+TEST_CASE( "remove" )
+{
+    sortedSingle list1;
+
+    SECTION( "empty" )
+    {
+        CHECK( list1.empty( ) == true );
+        REQUIRE( list1.remove( 0 ) == false );
+    }
+
+    CHECK( list1.insert( 0 ) == true );
+
+    SECTION( "remove only value" )
+    {
+        CHECK( list1.empty( ) == false );
+        CHECK( list1.size( ) == 1 );
+        CHECK( list1.find( 0 ) == true );
+        REQUIRE( list1.remove( 0 ) == true );
+        REQUIRE( list1.find( 0 ) == false );
+        REQUIRE( list1.empty( ) == true );
+        REQUIRE( list1.size( ) == 0 );
+    }
+
+    CHECK( list1.insert( 1 ) == true );
+
+    SECTION( "remove first value" )
+    {
+        CHECK( list1.size( ) == 2 );
+        CHECK( list1.find( 0 ) == true );
+        CHECK( list1.retrievePosition( 0 ) == 1 );
+        REQUIRE( list1.remove( 0 ) == true );
+        REQUIRE( list1.retrievePosition( 0 ) == 0 );
+        REQUIRE( list1.find( 0 ) == false );
+        REQUIRE( list1.size( ) == 1 );
+    }
+
+    CHECK( list1.insert( 2 ) == true );
+
+    SECTION( "remove last value" )
+    {
+        CHECK( list1.size( ) == 3 );
+        CHECK( list1.find( 2 ) == true );
+        CHECK( list1.retrievePosition( 2 ) == 3 );
+        REQUIRE( list1.remove( 2 ) == true );
+        REQUIRE( list1.retrievePosition( 2 ) == 0 );
+        REQUIRE( list1.find( 2 ) == false );
+        REQUIRE( list1.size( ) == 2 );
+    }
+
+    CHECK( list1.insert( 0 ) == true );
+
+    SECTION( "remove first instance of duplicated value" )
+    {
+        CHECK( list1.size( ) == 4 );
+        CHECK( list1.find( 0 ) == true );
+        CHECK( list1.retrievePosition( 0 ) == 1 );
+        REQUIRE( list1.remove( 0 ) == true );
+        REQUIRE( list1.size( ) == 3 );
+    }
+
+    CHECK( list1.insert( 1 ) == true );
+
+    SECTION( "more duplications" )
+    {
+        CHECK( list1.size( ) == 5 );
+        CHECK( list1.find( 1 ) == true );
+        CHECK( list1.retrievePosition( 1 ) == 3 );
+        REQUIRE( list1.remove( 1 ) == true );
+        REQUIRE( list1.size( ) == 4 );
+    }
+}
