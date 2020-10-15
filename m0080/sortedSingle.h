@@ -57,5 +57,4 @@ class sortedSingle
         node *next;     /*!< pointer to the remaining nodes in list */
     };
     node *headptr;      /*!< The location of the first node in the list */
-    node *curr = nullptr;
 };

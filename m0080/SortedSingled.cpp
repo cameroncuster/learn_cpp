@@ -12,11 +12,23 @@ sortedSingle::sortedSingle( sortedSingle &l )
         return;
     }
     headptr = l.headptr;
-    curr = headptr;
-    while( l.curr != nullptr )
+
+    // dynamically allocate a new node
+    node *curr = new ( nothrow ) node;
+    if( curr == nullptr )
     {
-        curr->theItem = l.curr->theItem;
-        curr->next = l.curr->next;
-        l.curr = l.curr->next;
+        return;
+    }
+    curr = headptr;
+    while( curr != nullptr )
+    {
+        node *newcurr = new ( nothrow ) node;
+        if( newcurr == nullptr )
+        {
+            return;
+        }
+        newcurr->theItem = curr->theItem;
+        newcurr->next = curr->next;
+        curr = curr->next;
     }
 }
