@@ -4,26 +4,6 @@
 #include <iostream>
 using namespace std;
 
-TEST_CASE( "copy constructor" )
-{
-    sortedSingle list1;
-    sortedSingle *list1cpy;
-    
-    ostringstream sout1;
-    ostringstream sout1cpy;
-
-    list1.insert( 10 );
-    list1.insert( 20 );
-    list1.insert( 30 );
-
-    list1cpy = new sortedSingle( list1 );
-    
-    list1.print( sout1 );
-    list1cpy->print( sout1cpy );
-    
-    REQUIRE( sout1.str( ) == sout1cpy.str( ) );
-}
-
 TEST_CASE( "default constructor" )
 {
     sortedSingle list1;
@@ -51,6 +31,39 @@ TEST_CASE( "default constructor" )
         CHECK( list1.empty( ) == false );
         CHECK( list1.size( ) == 5 );
     }
+}
+
+TEST_CASE( "copy constructor" )
+{
+    sortedSingle list1;
+    sortedSingle *list1cpy;
+
+    ostringstream sout1;
+    ostringstream sout1cpy;
+
+    list1cpy = new sortedSingle( list1 );
+
+    list1.print( sout1 );
+    list1cpy->print( sout1cpy );
+    REQUIRE( sout1.str( ) == sout1cpy.str( ) );
+
+    list1.insert( 10 );
+
+    list1cpy = new sortedSingle( list1 );
+
+    list1.print( sout1 );
+    list1cpy->print( sout1cpy );
+    REQUIRE( sout1.str( ) == sout1cpy.str( ) );
+
+    list1.insert( 20 );
+    list1.insert( 30 );
+
+    list1cpy = new sortedSingle( list1 );
+
+    list1.print( sout1 );
+    list1cpy->print( sout1cpy );
+
+    REQUIRE( sout1.str( ) == sout1cpy.str( ) );
 }
 
 TEST_CASE( "destructor - untestable" )
