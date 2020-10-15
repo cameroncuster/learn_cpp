@@ -8,7 +8,7 @@ bool sortedSingle::remove( int item )
     {
         return false;
     }
-    if( curr->theItem == item )
+    if( item <= curr->theItem )
     {
         headptr = curr->next;
         return true;
