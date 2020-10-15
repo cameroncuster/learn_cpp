@@ -64,6 +64,12 @@ TEST_CASE( "copy constructor" )
     list1cpy->print( sout1cpy );
 
     REQUIRE( sout1.str( ) == sout1cpy.str( ) );
+
+    list1.remove( 10 );
+    list1.print( sout1 );
+    list1cpy->print( sout1cpy );
+
+    REQUIRE( sout1.str( ) != sout1cpy.str( ) );
 }
 
 TEST_CASE( "destructor - untestable" )

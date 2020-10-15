@@ -7,22 +7,27 @@
 
 sortedSingle::sortedSingle( sortedSingle &l )
 {
-    if( headptr = nullptr )
+    if( l.headptr == nullptr )
     {
+        headptr = nullptr;
         return;
     }
-    headptr = l.headptr;
+    node *curr = l.headptr;
 
     // dynamically allocate a new node
-    node *curr = new ( nothrow ) node;
-    if( curr == nullptr )
+    node *newcurr = new ( nothrow ) node;
+    if( newcurr == nullptr )
     {
         return;
     }
-    curr = headptr;
+    newcurr->theItem = curr->theItem;
+    newcurr->next = curr->next;
+    headptr = newcurr;
+    curr = curr->next;
+
     while( curr != nullptr )
     {
-        node *newcurr = new ( nothrow ) node;
+        newcurr = new ( nothrow ) node;
         if( newcurr == nullptr )
         {
             return;

@@ -36,7 +36,7 @@ bool sortedSingle::insert( int item )
     }
     prev->next = newItem;
     newItem->next = curr;
-    return true ;
+    return true;
 }
 
 void sortedSingle::print( ostream &out, string seperator )
