@@ -607,6 +607,21 @@ TEST_CASE( "print" )
 TEST_CASE( "remove" )
 {
     sortedSingle list1;
+    sortedSingle list2;
+
+    CHECK( list2.insert( 10 ) == true );
+
+    SECTION( "before first value" )
+    {
+        REQUIRE( list2.remove( 5 ) == false );
+    }
+
+    CHECK( list2.insert( 20 ) == true );
+
+    SECTION( "not in list between two items" )
+    {
+        REQUIRE( list2.remove( 15 ) == false );
+    }
 
     SECTION( "empty" )
     {
