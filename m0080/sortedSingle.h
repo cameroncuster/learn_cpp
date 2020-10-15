@@ -25,6 +25,9 @@ class sortedSingle
     // do not write. under any circumstances do not write
     sortedSingle( sortedSingle &l );
 
+    // function to test copy constructor
+    
+
     // file sortedSinglea.cpp
     sortedSingle( );
     ~sortedSingle( );

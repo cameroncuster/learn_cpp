@@ -4,7 +4,27 @@
 #include <iostream>
 using namespace std;
 
-TEST_CASE( "constructor" )
+TEST_CASE( "copy constructor" )
+{
+    sortedSingle list1;
+    sortedSingle *list1cpy;
+    
+    ostringstream sout1;
+    ostringstream sout1cpy;
+
+    list1.insert( 10 );
+    list1.insert( 20 );
+    list1.insert( 30 );
+
+    list1cpy = new sortedSingle( list1 );
+    
+    list1.print( sout1 );
+    list1cpy->print( sout1cpy );
+    
+    REQUIRE( sout1.str( ) == sout1cpy.str( ) );
+}
+
+TEST_CASE( "default constructor" )
 {
     sortedSingle list1;
 
@@ -25,9 +45,15 @@ TEST_CASE( "constructor" )
         CHECK( list1.empty( ) == false );
         CHECK( list1.size( ) == 5 );
     }
+
+    SECTION( "new section" )
+    {
+        CHECK( list1.empty( ) == false );
+        CHECK( list1.size( ) == 5 );
+    }
 }
 
-TEST_CASE( "destructor" )
+TEST_CASE( "destructor - untestable" )
 {
     sortedSingle list1;
 
@@ -714,4 +740,13 @@ TEST_CASE( "clear" )
     {
         REQUIRE( sout1.str( ) == "" );
     }
+}
+
+TEST_CASE( "remove - should fail" )
+{
+    sortedSingle list1;
+    list1.insert( 20 );
+    list1.insert( 30 );
+    REQUIRE( list1.remove( 30 ) == true );
+    REQUIRE(list1.size( ) == 1);
 }

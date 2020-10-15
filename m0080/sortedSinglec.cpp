@@ -4,26 +4,29 @@ bool sortedSingle::remove( int item )
 {
     node *prev = headptr;
     node *curr = headptr;
-    if( empty( ) == true || item < curr->theItem )
+    if( empty( ) == true )
     {
         return false;
     }
     if( item == curr->theItem )
     {
         headptr = curr->next;
+        delete curr;
         return true;
     }
-    while( curr->next != nullptr && curr->theItem != item )
+    while( curr != nullptr && curr->theItem != item )
     {
         prev = curr;
         curr = curr->next;
     }
-    if( curr->theItem == item )
+    if( curr == nullptr )
     {
-        prev->next = curr->next;
-        return true;
+        return false;
     }
-    return false;
+
+    prev->next = curr->next;
+    delete curr;
+    return true;
 }
 
 void sortedSingle::clear( )
