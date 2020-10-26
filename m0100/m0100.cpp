@@ -18,12 +18,17 @@ struct rune
 };
 
 void read( ifstream &fin, vector<rune> &glyph );
+void permute( int soln[], bool used[], int n, int pos );
 
 int main( int argc, char *argv[] )
 {
     ifstream fin;
     string header;
     vector<rune> glyph;
+    int soln[3] = { 0 };
+    bool used[3] = { false };
+    int count = 0;
+    int pos = 0;
 
     if( argc != 2 )
     {
@@ -41,6 +46,9 @@ int main( int argc, char *argv[] )
     getline( fin, header );
 
     read( fin, glyph );
+
+    permute( soln, used, glyph.size( ), pos );
+
     for( int i = 0; i < glyph.size( ); i++ )
     {
         cout << glyph[i].name << ' ';
@@ -62,7 +70,7 @@ void read( ifstream &fin, vector<rune> &glyph )
         {
             temp.type = POTENCY;
         }
-        else if( tempString == "Essenece" )
+        else if( tempString == "Essence" )
         {
             temp.type = ESSENCE;
         }
@@ -71,5 +79,31 @@ void read( ifstream &fin, vector<rune> &glyph )
             temp.type = ASPECT;
         }
         glyph.push_back( temp );
+    }
+}
+
+void permute( int soln[], bool used[], int n, int pos )
+{
+    int i;
+
+    if( pos == n )
+    {
+        for( i = 0; i < n; i++ )
+        {
+            cout << soln[i] << " ";
+        }
+        cout << endl;
+        return;
+    }
+
+    for( i = 0; i < n; i++ )
+    {
+        if( used[i] == false )
+        {
+            soln[pos] = i;
+            used[i] = true;
+            permute( soln, used, n, pos + 1 );
+            used[i] = false;
+        }
     }
 }
