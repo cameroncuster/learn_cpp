@@ -27,7 +27,7 @@ int main( int argc, char *argv[] )
     vector<rune> glyph;
     string soln[3] = { "" };
     trait typeCondition[3] = { POTENCY };
-    bool used[300] = { false }; // [ POTENCY, ESSENCE, ASPECT ]
+    bool used[300] = { false };
     int count = 0;
     int pos = 0;
 
@@ -47,14 +47,6 @@ int main( int argc, char *argv[] )
     getline( fin, header );
 
     read( fin, glyph );
-    /*
-    for( int i = 0; i < glyph.size( ); i++ )
-    {
-        cout << glyph[i].name << ' ';
-        cout << glyph[i].type << endl;
-    }
-    cout << endl << endl;
-    */
 
     permute( glyph, soln, used, pos );
     
