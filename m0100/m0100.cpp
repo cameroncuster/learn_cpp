@@ -25,10 +25,16 @@ int main( int argc, char *argv[] )
     string header;
     vector<rune> glyph;
 
+    if( argc != 2 )
+    {
+        cout << "m0100.exe csvdatafile";
+        exit( 0 );
+    }
+
     fin.open( argv[1] );
     if( !fin.is_open( ) )
     {
-        cout << "Unable to open: " << argv[1];
+        cout << " Unable to open: " << argv[1];
         exit( 0 );
     }
 
