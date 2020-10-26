@@ -83,14 +83,11 @@ void permute( vector<rune> glyph, string soln[], bool used[], int pos )
 
     if( pos == 3 )
     {
-        if( true )
+        for( i = 0; i < 3; i++ )
         {
-            for( i = 0; i < 3; i++ )
-            {
-                cout << soln[i] << " ";
-            }
-            cout << endl;
+            cout << soln[i] << " ";
         }
+        cout << endl;
         return;
     }
 
