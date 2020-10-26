@@ -54,7 +54,7 @@ int main( int argc, char *argv[] )
     }
     cout << endl << endl;
 
-    permute( soln, used, 3, pos );
+    permute( soln, used, 3, pos, k );
     
     return 0;
 }
@@ -103,7 +103,7 @@ void permute( int soln[], bool used[], int n, int pos, int k )
         {
             soln[pos] = i;
             used[i] = true;
-            permute( soln, used, n, pos + 1 );
+            permute( soln, used, n, pos + 1, k );
             used[i] = false;
         }
     }
