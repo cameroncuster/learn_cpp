@@ -18,7 +18,7 @@ struct rune
 };
 
 void read( ifstream &fin, vector<rune> &glyph );
-void permute( int soln[], bool used[], int n, int pos );
+void permute( int soln[], bool used[], int n, int pos, int k );
 
 int main( int argc, char *argv[] )
 {
@@ -26,9 +26,10 @@ int main( int argc, char *argv[] )
     string header;
     vector<rune> glyph;
     int soln[3] = { 0 };
-    bool used[3] = { false };
+    bool used[3] = { false }; // [ POTENCY, ESSENCE, ASPECT ]
     int count = 0;
     int pos = 0;
+    int k = 3;
 
     if( argc != 2 )
     {
@@ -46,15 +47,15 @@ int main( int argc, char *argv[] )
     getline( fin, header );
 
     read( fin, glyph );
-
-    permute( soln, used, glyph.size( ), pos );
-
     for( int i = 0; i < glyph.size( ); i++ )
     {
         cout << glyph[i].name << ' ';
         cout << glyph[i].type << endl;
     }
+    cout << endl << endl;
 
+    permute( soln, used, 3, pos );
+    
     return 0;
 }
 
@@ -82,11 +83,11 @@ void read( ifstream &fin, vector<rune> &glyph )
     }
 }
 
-void permute( int soln[], bool used[], int n, int pos )
+void permute( int soln[], bool used[], int n, int pos, int k )
 {
     int i;
 
-    if( pos == n )
+    if( pos == k )
     {
         for( i = 0; i < n; i++ )
         {
