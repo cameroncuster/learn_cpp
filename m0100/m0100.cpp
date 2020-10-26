@@ -25,8 +25,9 @@ int main( int argc, char *argv[] )
     ifstream fin;
     string header;
     vector<rune> glyph;
-    string soln[3] = { "" }; // what type should this be?
-    bool used[3] = { false }; // [ POTENCY, ESSENCE, ASPECT ]
+    string soln[3] = { "" };
+    trait typeCondition[3] = { POTENCY };
+    bool used[300] = { false }; // [ POTENCY, ESSENCE, ASPECT ]
     int count = 0;
     int pos = 0;
 
@@ -46,12 +47,14 @@ int main( int argc, char *argv[] )
     getline( fin, header );
 
     read( fin, glyph );
+    /*
     for( int i = 0; i < glyph.size( ); i++ )
     {
         cout << glyph[i].name << ' ';
         cout << glyph[i].type << endl;
     }
     cout << endl << endl;
+    */
 
     permute( glyph, soln, used, pos );
     
@@ -88,11 +91,14 @@ void permute( vector<rune> glyph, string soln[], bool used[], int pos )
 
     if( pos == 3 )
     {
-        for( i = 0; i < 3; i++ )
+        if( true )
         {
-            cout << soln[i] << " ";
+            for( i = 0; i < 3; i++ )
+            {
+                cout << soln[i] << " ";
+            }
+            cout << endl;
         }
-        cout << endl;
         return;
     }
 
@@ -100,10 +106,13 @@ void permute( vector<rune> glyph, string soln[], bool used[], int pos )
     {
         if( used[i] == false )
         {
-            soln[pos] = glyph[i].name;
-            used[i] = true;
-            permute( glyph, soln, used, pos + 1 );
-            used[i] = false;
+            if( glyph[i].type == pos )
+            {
+                soln[pos] = glyph[i].name;
+                used[i] = true;
+                permute( glyph, soln, used, pos + 1 );
+                used[i] = false;
+            }
         }
     }
 }
