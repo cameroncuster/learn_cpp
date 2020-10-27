@@ -59,7 +59,7 @@ void read( ifstream &fin, vector<rune> &glyph )
     string tempString;
     while( getline( fin, tempString) )
     {
-        temp.name = tempString.substr( 0, tempString.find(',') );
+        temp.name = tempString.substr( 0, tempString.find( ',' ) );
         tempString = tempString.erase( 0, tempString.find( ',' ) + 1 );
         if( tempString == "Potency" )
         {
@@ -93,15 +93,12 @@ void permute( vector<rune> glyph, string soln[], bool used[], int pos )
 
     for( i = 0; i < glyph.size( ); i++ )
     {
-        if( used[i] == false )
+        if( used[i] == false && glyph[i].type == pos )
         {
-            if( glyph[i].type == pos )
-            {
-                soln[pos] = glyph[i].name;
-                used[i] = true;
-                permute( glyph, soln, used, pos + 1 );
-                used[i] = false;
-            }
+            soln[pos] = glyph[i].name;
+            used[i] = true;
+            permute( glyph, soln, used, pos + 1 );
+            used[i] = false;
         }
     }
 }
