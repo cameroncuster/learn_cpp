@@ -15,5 +15,24 @@
  *****************************************************************************/
 bool Queue::enqueue( string word )
 {
-    // sk
+    node *temp = new ( nothrow ) node;
+    if( temp == nullptr )
+    {
+        exit( 1 );
+    }
+    temp->item = word;
+    temp->next = nullptr;
+    if( headptr == nullptr )
+    {
+        headptr = temp;
+        tailptr = temp;
+        return true;
+    }
+    else
+    {
+        tailptr->next = temp;
+        tailptr = temp;
+    }
+
+    return true;
 }
