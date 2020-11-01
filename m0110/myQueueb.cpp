@@ -46,6 +46,11 @@ bool Queue::dequeue( string &word )
  *****************************************************************************/
 bool Queue::front( string &word )
 {
-
+    node *temp = headptr;
+    if( headptr == nullptr )
+    {
+        return false;
+    }
+    word = temp->item;
     return true;
 }
