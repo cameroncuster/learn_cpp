@@ -18,7 +18,21 @@
  *****************************************************************************/
 bool Queue::dequeue( string &word )
 {
-
+    node *temp = headptr;
+    if( headptr == nullptr )
+    {
+        return false;
+    }
+    word = temp->item;
+    if( headptr == tailptr )
+    {
+        headptr = nullptr;
+        tailptr = nullptr;
+        delete temp;
+        return true;
+    }
+    headptr = headptr->next;
+    delete temp;
     return true;
 }
 

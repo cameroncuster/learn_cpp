@@ -28,11 +28,7 @@ bool Queue::enqueue( string word )
         tailptr = temp;
         return true;
     }
-    else
-    {
-        tailptr->next = temp;
-        tailptr = temp;
-    }
-
+    tailptr->next = temp;
+    tailptr = temp;
     return true;
 }
