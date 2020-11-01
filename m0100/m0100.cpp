@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <algorithm>
 using namespace std;
 
 enum trait
@@ -18,6 +19,7 @@ struct rune
 };
 
 void read( ifstream &fin, vector<rune> &glyph );
+
 void permute( vector<rune> glyph, string soln[], bool used[], int pos );
 
 int main( int argc, char *argv[] )
