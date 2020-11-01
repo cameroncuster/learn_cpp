@@ -149,6 +149,46 @@ TEST_CASE( "QUEUE::DEQUEUE - REMOVING FROM A QUEUE" )
     }
 }
 
+TEST_CASE( "QUEUE::FRONT - GET THE FIRST WORD IN THE QUEUE" )
+{
+    Queue queue1;
+    ostringstream sout1;
+    string word;
+
+    SECTION( "EMPTY" )
+    {
+        // front items from an empty list
+        REQUIRE( queue1.front( word ) == false );
+        REQUIRE( word == "" );
+
+        // empty print
+        queue1.print( sout1 );
+
+        // nullified queue
+        CHECK( queue1.size( ) == 0 );
+        REQUIRE( sout1.str( ) == "" );
+    }
+
+    // enqueue multiple items
+    REQUIRE( queue1.enqueue( "a" ) == true );
+    REQUIRE( queue1.enqueue( "b" ) == true );
+    REQUIRE( queue1.enqueue( "c" ) == true );
+
+    SECTION( "MULTIPLE ITEMS FRONT" )
+    {
+        // front items from an empty list
+        REQUIRE( queue1.front( word ) == true );
+        REQUIRE( word == "a" );
+
+        // empty print
+        queue1.print( sout1 );
+
+        // nullified queue
+        CHECK( queue1.size( ) == 3 );
+        REQUIRE( sout1.str( ) == "a, b, c" );
+    }
+}
+
 
 
 
