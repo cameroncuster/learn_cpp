@@ -215,7 +215,7 @@ TEST_CASE( "COPY CONSTRUCTOR" )
 
     // print
     queue1.print( sout1 );
-    queue2.print( sout2 );
+    queue3.print( sout2 );
 
     SECTION( "SINGLE ITEM ENQUEUES" )
     {
@@ -244,7 +244,7 @@ TEST_CASE( "COPY CONSTRUCTOR" )
 
     // print
     queue1.print( sout1 );
-    queue2.print( sout2 );
+    queue4.print( sout2 );
 
     SECTION( "MULTIPLE ITEM ENQUEUES" )
     {
