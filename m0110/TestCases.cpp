@@ -189,6 +189,70 @@ TEST_CASE( "QUEUE::FRONT - GET THE FIRST WORD IN THE QUEUE" )
     }
 }
 
+TEST_CASE( "COPY CONSTRUCTOR" )
+{
+    Queue queue1;
+    ostringstream sout1, sout2;
+
+    // copy the queue
+    Queue queue2( queue1 );
+
+    // empty print
+    queue1.print( sout1 );
+    queue2.print( sout2 );
+
+    SECTION( "EMPTY" )
+    {
+        CHECK( queue1.size( ) == queue2.size( ) );
+        REQUIRE( sout1.str( ) == sout2.str( ) );
+    }
+
+    // enqueue items in the queue
+    REQUIRE( queue1.enqueue( "a" ) == true );
+
+    // copy the queue
+    Queue queue3( queue1 );
+
+    // print
+    queue1.print( sout1 );
+    queue2.print( sout2 );
+
+    SECTION( "SINGLE ITEM ENQUEUES" )
+    {
+        CHECK( queue1.size( ) == queue3.size( ) );
+        REQUIRE( sout1.str( ) == sout2.str( ) );
+    }
+
+    // clear the string streams
+    sout1.clear( );
+    sout2.clear( );
+
+    // enqueue items in the queue
+    REQUIRE( queue1.enqueue( "a" ) == true );
+    REQUIRE( queue1.enqueue( "b" ) == true );
+    REQUIRE( queue1.enqueue( "c" ) == true );
+    REQUIRE( queue1.enqueue( "d" ) == true );
+    REQUIRE( queue1.enqueue( "e" ) == true );
+    REQUIRE( queue1.enqueue( "f" ) == true );
+    REQUIRE( queue1.enqueue( "g" ) == true );
+    REQUIRE( queue1.enqueue( "h" ) == true );
+    REQUIRE( queue1.enqueue( "i" ) == true );
+    REQUIRE( queue1.enqueue( "j" ) == true );
+
+    // copy the queue
+    Queue queue4( queue1 );
+
+    // print
+    queue1.print( sout1 );
+    queue2.print( sout2 );
+
+    SECTION( "MULTIPLE ITEM ENQUEUES" )
+    {
+        CHECK( queue1.size( ) == queue4.size( ) );
+        REQUIRE( sout1.str( ) == sout2.str( ) );
+    }
+}
+
 
 
 
