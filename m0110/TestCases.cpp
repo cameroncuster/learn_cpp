@@ -189,7 +189,7 @@ TEST_CASE( "QUEUE::FRONT - GET THE FIRST WORD IN THE QUEUE" )
     }
 }
 
-TEST_CASE( "COPY CONSTRUCTOR" )
+TEST_CASE( "QUEUE::COPY_CONSTRUCTOR" )
 {
     Queue queue1;
     ostringstream sout1, sout2;
@@ -198,8 +198,8 @@ TEST_CASE( "COPY CONSTRUCTOR" )
     Queue queue2( queue1 );
 
     // empty print
-    queue1.print( sout1 );
-    queue2.print( sout2 );
+    printQueue( queue1, sout1 );
+    printQueue( queue2, sout2 );
 
     SECTION( "EMPTY" )
     {
@@ -214,8 +214,8 @@ TEST_CASE( "COPY CONSTRUCTOR" )
     Queue queue3( queue1 );
 
     // print
-    queue1.print( sout1 );
-    queue3.print( sout2 );
+    printQueue( queue1, sout1 );
+    printQueue( queue3, sout2 );
 
     SECTION( "SINGLE ITEM ENQUEUES" )
     {
@@ -243,8 +243,8 @@ TEST_CASE( "COPY CONSTRUCTOR" )
     Queue queue4( queue1 );
 
     // print
-    queue1.print( sout1 );
-    queue4.print( sout2 );
+    printQueue( queue1, sout1 );
+    printQueue( queue4, sout2 );
 
     SECTION( "MULTIPLE ITEM ENQUEUES" )
     {
@@ -255,12 +255,18 @@ TEST_CASE( "COPY CONSTRUCTOR" )
 
 
 
-
 void printQueue( Queue q, ostream &out )
 {
     // write the code to print a queue to the screen destroying the
     // contents of the queue when done. It is pass by value.
-    
-
-
+    string word;
+    while( q.empty( ) == true )
+    {
+        q.dequeue( word );
+        out << word;
+        if( q.size( ) != 1 )
+        {
+            out << ", ";
+        }
+    }
 }
