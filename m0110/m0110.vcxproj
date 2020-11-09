@@ -144,6 +144,7 @@
     <ClCompile Include="myQueuea.cpp" />
     <ClCompile Include="myQueueb.cpp" />
     <ClCompile Include="myQueuec.cpp" />
+    <ClCompile Include="myQueued.cpp" />
     <ClCompile Include="TestCases.cpp" />
   </ItemGroup>
   <ItemGroup>

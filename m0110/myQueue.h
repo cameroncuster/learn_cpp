@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <new>
+#include <algorithm>
 using std::string;
 using std::nothrow;
 using std::ostream;
@@ -40,6 +41,14 @@ class Queue
 
     void print( ostream &out );
 
+    Queue &operator=( Queue &q )
+    {
+        this->clear( );
+        Queue temp( q );
+        swap( temp );
+        return *this;
+    }
+
     private:
 
     /** ***********************************************************************
@@ -56,7 +65,5 @@ class Queue
     node *headptr;  /*!< A pointer to the first item in the Queue*/
     node *tailptr;  /*!< A pointer to the last item in the Queue */
 };
-
-
 
 #endif

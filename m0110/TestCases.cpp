@@ -253,7 +253,44 @@ TEST_CASE( "QUEUE::COPY_CONSTRUCTOR" )
     }
 }
 
+TEST_CASE( "QUEUE::OPERATOR=" )
+{
+    Queue queue1, queue2;
+    ostringstream sout1, sout2;
 
+    queue1 = queue2;
+
+    queue1.print( sout1 );
+    queue2.print( sout2 );
+
+    SECTION( "EMPTY" )
+    {
+        REQUIRE( sout1.str( ) == sout2.str( ) );
+    }
+
+    queue2.enqueue( "a" );
+    
+    queue1 = queue2;
+
+    queue1.print( sout1 );
+    queue2.print( sout2 );
+
+
+    SECTION( "DIFFERENT LENGTH QUEUES" )
+    {
+        REQUIRE( sout1.str( ) == sout2.str( ) );
+    }
+
+    queue1 = queue2;
+
+    queue1.print( sout1 );
+    queue2.print( sout2 );
+
+    SECTION( "SAME LENGTH QUEUES" )
+    {
+        REQUIRE( sout1.str( ) == sout2.str( ) );
+    }
+}
 
 void printQueue( Queue q, ostream &out )
 {
