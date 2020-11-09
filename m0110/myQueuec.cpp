@@ -17,14 +17,10 @@ Queue::Queue( Queue &q )
     node *dest;
     headptr = nullptr;
     if( q.headptr == nullptr )
-    {
         return;
-    }
     headptr = new ( nothrow ) node;
     if( headptr == nullptr )
-    {
         exit( 1 );
-    }
     headptr->item = q.headptr->item;
     headptr->next = q.headptr->next;
     src = q.headptr->next;
@@ -33,9 +29,7 @@ Queue::Queue( Queue &q )
     {
         dest->next = new ( nothrow ) node;
         if( dest->next == nullptr )
-        {
             exit( 1 );
-        }
         dest = dest->next;
         dest->item = src->item;
         dest->next = nullptr;

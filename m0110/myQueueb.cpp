@@ -20,9 +20,7 @@ bool Queue::dequeue( string &word )
 {
     node *temp = headptr;
     if( headptr == nullptr )
-    {
         return false;
-    }
     word = temp->item;
     if( headptr == tailptr )
     {
@@ -48,9 +46,7 @@ bool Queue::front( string &word )
 {
     node *temp = headptr;
     if( headptr == nullptr )
-    {
         return false;
-    }
     word = temp->item;
     return true;
 }

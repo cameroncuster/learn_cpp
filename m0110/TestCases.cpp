@@ -298,21 +298,21 @@ TEST_CASE( "QUEUE::OPERATOR==" )
 
     SECTION( "EMPTY" )
     {
-        REQUIRE( queue1 == queue2 );
+        REQUIRE( ( queue1 == queue2 ) == true );
     }
 
     queue1.enqueue( "a" );
 
     SECTION( "DIFFERENT LENGTH QUEUES" )
     {
-        // how do I test this?
+        REQUIRE( ( queue1 == queue2 ) == false );
     }
 
     queue2.enqueue( "a" );
 
     SECTION( "SAME LENGTH QUEUES" )
     {
-        REQUIRE( queue1 == queue2 );
+        REQUIRE( ( queue1 == queue2 ) == true );
     }
 }
 
@@ -322,21 +322,21 @@ TEST_CASE( "QUEUE::OPERATOR!=" )
 
     SECTION( "EMPTY" )
     {
-        // how do I test this?
+        REQUIRE( ( queue1 != queue2 ) == false );
     }
 
     queue1.enqueue( "a" );
 
     SECTION( "DIFFERENT LENGTH QUEUES" )
     {
-        REQUIRE( queue1 != queue2 );
+        REQUIRE( ( queue1 != queue2 ) == true );
     }
 
     queue2.enqueue( "b" );
 
     SECTION( "SAME LENGTH QUEUES" )
     {
-        REQUIRE( queue1 != queue2 );
+        REQUIRE( ( queue1 != queue2 ) == true );
     }
 }
 
@@ -350,8 +350,6 @@ void printQueue( Queue q, ostream &out )
         q.dequeue( word );
         out << word;
         if( q.size( ) != 1 )
-        {
             out << ", ";
-        }
     }
 }

@@ -12,8 +12,9 @@ bool Queue::operator==( Queue &q )
 {
     node *src1;
     node *src2;
-    if( size( ) == q.size( ) )
+    if( size( ) != q.size( ) )
         return false;
+
     src1 = headptr;
     src2 = q.headptr;
     while( src1 != nullptr && src1->item == src2->item )

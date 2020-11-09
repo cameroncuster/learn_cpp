@@ -17,9 +17,7 @@ bool Queue::enqueue( string word )
 {
     node *temp = new ( nothrow ) node;
     if( temp == nullptr )
-    {
         exit( 1 );
-    }
     temp->item = word;
     temp->next = nullptr;
     if( headptr == nullptr )
