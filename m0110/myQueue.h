@@ -41,13 +41,10 @@ class Queue
 
     void print( ostream &out );
 
-    Queue &operator=( Queue &q )
-    {
-        this->clear( );
-        Queue temp( q );
-        swap( temp );
-        return *this;
-    }
+    // operator functions
+    Queue &operator=( Queue &q );
+    bool operator==( Queue &q );
+    bool operator!=( Queue &q );
 
     private:
 

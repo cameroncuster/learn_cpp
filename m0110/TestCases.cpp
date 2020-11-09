@@ -292,6 +292,54 @@ TEST_CASE( "QUEUE::OPERATOR=" )
     }
 }
 
+TEST_CASE( "QUEUE::OPERATOR==" )
+{
+    Queue queue1, queue2;
+
+    SECTION( "EMPTY" )
+    {
+        REQUIRE( queue1 == queue2 );
+    }
+
+    queue1.enqueue( "a" );
+
+    SECTION( "DIFFERENT LENGTH QUEUES" )
+    {
+        // how do I test this?
+    }
+
+    queue2.enqueue( "a" );
+
+    SECTION( "SAME LENGTH QUEUES" )
+    {
+        REQUIRE( queue1 == queue2 );
+    }
+}
+
+TEST_CASE( "QUEUE::OPERATOR!=" )
+{
+    Queue queue1, queue2;
+
+    SECTION( "EMPTY" )
+    {
+        // how do I test this?
+    }
+
+    queue1.enqueue( "a" );
+
+    SECTION( "DIFFERENT LENGTH QUEUES" )
+    {
+        REQUIRE( queue1 != queue2 );
+    }
+
+    queue2.enqueue( "b" );
+
+    SECTION( "SAME LENGTH QUEUES" )
+    {
+        REQUIRE( queue1 != queue2 );
+    }
+}
+
 void printQueue( Queue q, ostream &out )
 {
     // write the code to print a queue to the screen destroying the
