@@ -2,8 +2,8 @@
 
 Queue &Queue::operator=( Queue &q )
 {
-    this->clear( );
     Queue temp( q );
+    this->clear( );
     swap( temp );
     return *this;
 }

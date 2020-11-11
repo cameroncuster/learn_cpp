@@ -290,6 +290,16 @@ TEST_CASE( "QUEUE::OPERATOR=" )
     {
         REQUIRE( sout1.str( ) == sout2.str( ) );
     }
+
+    queue1 = queue1;
+
+    queue1.print( sout1 );
+    queue1.print( sout2 );
+
+    SECTION( "SAME QUEUES" )
+    {
+        REQUIRE( sout1.str( ) == sout2.str( ) );
+    }
 }
 
 TEST_CASE( "QUEUE::OPERATOR==" )
