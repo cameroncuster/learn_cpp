@@ -4,6 +4,89 @@
 #include <iostream>
 using namespace std;
 
+// iterator class tests
+TEST_CASE( "ITERATOR" )
+{
+    sortedSingle list1;
+    sortedSingle::iterator it;
+
+    ostringstream sout1;
+
+    list1.insert( 10 );
+    list1.insert( 30 );
+    list1.insert( 20 );
+    list1.insert( 50 );
+    list1.insert( 40 );
+
+    it = list1.begin( );
+
+    SECTION( "PRE_INCREMENT" )
+    {
+        while( it != list1.end( ) )
+        {
+            sout1 << *it;
+            ++it;
+            if( it != list1.end( ) )
+                sout1 << ", ";
+        }
+        REQUIRE( sout1.str( ) == "10, 20, 30, 40, 50" );
+    }
+
+    SECTION( "PRE_INCREMENT" )
+    {
+        while( it != list1.end( ) )
+        {
+            sout1 << *it;
+            it++;
+            if( it != list1.end( ) )
+                sout1 << ", ";
+        }
+        REQUIRE( sout1.str( ) == "10, 20, 30, 40, 50" );
+    }
+
+    SECTION( "EQUALITY&!" )
+    {
+        sortedSingle::iterator it1 = list1.begin( );
+        sortedSingle::iterator it2 = list1.begin( );
+        sortedSingle::iterator it3 = list1.end( );
+
+        REQUIRE( it1 == it2 );
+        REQUIRE( it1 != it3 );
+        REQUIRE( it2 != it3 );
+    }
+
+    SECTION( "DEREFRENCE" )
+    {
+        it = list1.begin( );
+        *it = 9;
+
+        for( it = list1.begin( ); it != list1.end( ); it++ )
+            sout1 << *it << ' ';
+        REQUIRE( sout1.str( ) == "9 20 30 40 50 " );
+    }
+
+    SECTION( "DEREFRENCE_RETURN_VAL" )
+    {
+        int n;
+        n = *it;
+        REQUIRE( n == 10 );
+        n = *it++;
+        REQUIRE( n == 10 );
+    }
+
+    SECTION( "ADDRESS_OF_ITEM" )
+    {
+        it = list1.begin( );
+        ++it;
+        it++;
+
+        *it = 35;
+        for( it = list1.begin( ); it != list1.end( ); ++it )
+            sout1 << *it << ' ';
+        REQUIRE( sout1.str( ) == "10 20 35 40 50 " );
+    }
+}
+
 TEST_CASE( "default constructor" )
 {
     sortedSingle list1;
@@ -45,7 +128,7 @@ TEST_CASE( "copy constructor" )
     ecpy.print( sout1cpy );
 
     REQUIRE( sout1.str( ) == sout1cpy.str( ) );
-
+    
     list1.insert( 10 );
     list1.insert( 20 );
     list1.insert( 30 );

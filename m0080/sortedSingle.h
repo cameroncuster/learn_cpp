@@ -18,6 +18,19 @@ using namespace std;
  ****************************************************************************/
 class sortedSingle
 {
+    private:
+
+    /** 
+     * @brief  the storage container for each item in the list 
+     */
+    struct node
+    {
+
+        int theItem;    /*!< the item */
+        node *next;     /*!< pointer to the remaining nodes in list */
+    };
+    node *headptr;      /*!< The location of the first node in the list */
+
     public:
 
     // do not write. under any circumstances do not write
@@ -39,21 +52,12 @@ class sortedSingle
     bool remove( int item );
     void clear( );
 
-    private:
 
-    /** 
-     * @brief  the storage container for each item in the list 
-     */
-    struct node
+    class iterator : public std::iterator<std::forward_iterator_tag, int>
     {
+        private:
+        node *itptr;
 
-        int theItem;    /*!< the item */
-        node *next;     /*!< pointer to the remaining nodes in list */
-    };
-    node *headptr;      /*!< The location of the first node in the list */
-
-    class iterator : public std::iterator<forward_iterator_tag, int>
-    {
         public:
         iterator( node *ptr = nullptr );
         iterator( const iterator &it );
@@ -64,9 +68,6 @@ class sortedSingle
         int *operator->( ) const;
         bool operator==( const iterator &x ) const;
         bool operator!=( const iterator &x ) const;
-
-        private:
-        node *itptr;
     };
     iterator begin( );
     iterator end( );
