@@ -36,38 +36,37 @@ TEST_CASE( "default constructor" )
 TEST_CASE( "copy constructor" )
 {
     sortedSingle list1;
-    sortedSingle *list1cpy;
+    sortedSingle ecpy;
 
     ostringstream sout1;
     ostringstream sout1cpy;
 
-    list1cpy = new sortedSingle( list1 );
-
     list1.print( sout1 );
-    list1cpy->print( sout1cpy );
+    ecpy.print( sout1cpy );
+
     REQUIRE( sout1.str( ) == sout1cpy.str( ) );
 
     list1.insert( 10 );
-
-    list1cpy = new sortedSingle( list1 );
-
-    list1.print( sout1 );
-    list1cpy->print( sout1cpy );
-    REQUIRE( sout1.str( ) == sout1cpy.str( ) );
-
     list1.insert( 20 );
     list1.insert( 30 );
+    list1.insert( 40 );
+    list1.insert( 50 );
 
-    list1cpy = new sortedSingle( list1 );
-
+    sortedSingle list1cpy( list1 );
+    
     list1.print( sout1 );
-    list1cpy->print( sout1cpy );
+    list1cpy.print( sout1cpy );
 
     REQUIRE( sout1.str( ) == sout1cpy.str( ) );
 
+    sout1.clear( );
+    sout1cpy.clear( );
+
     list1.remove( 10 );
+    list1.remove( 20 );
+
     list1.print( sout1 );
-    list1cpy->print( sout1cpy );
+    list1cpy.print( sout1cpy );
 
     REQUIRE( sout1.str( ) != sout1cpy.str( ) );
 }

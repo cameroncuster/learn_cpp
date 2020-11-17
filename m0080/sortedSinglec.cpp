@@ -38,5 +38,4 @@ void sortedSingle::clear( )
         delete temp;
         temp = headptr;
     }
-    delete headptr;
 }
