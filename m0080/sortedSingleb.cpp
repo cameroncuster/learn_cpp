@@ -6,14 +6,13 @@ using std::string;
 using std::nothrow;
 using namespace std;
 
-bool sortedSingle::insert( int item )
+template <typename TY>
+bool sortedSingle<TY>::insert( TY item )
 {
     node *newItem;
     newItem = new ( nothrow ) node;
     if( newItem == nullptr )
-    {
         return false;
-    }
     newItem->theItem = item;
     newItem->next = nullptr;
     if( empty( ) == true )
@@ -39,13 +38,12 @@ bool sortedSingle::insert( int item )
     return true;
 }
 
-void sortedSingle::print( ostream &out, string seperator )
+template <typename TY>
+void sortedSingle<TY>::print( ostream &out, string seperator )
 {
     node *temp = headptr;
     if( empty( ) == true )
-    {
         return;
-    }
     while( temp->next != nullptr )
     {
         out << temp->theItem;

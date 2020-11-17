@@ -1,13 +1,12 @@
 #include "sortedSingle.h"
 
-bool sortedSingle::remove( int item )
+template <typename TY>
+bool sortedSingle<TY>::remove( TY item )
 {
     node *prev = headptr;
     node *curr = headptr;
     if( empty( ) == true )
-    {
         return false;
-    }
     if( item == curr->theItem )
     {
         headptr = curr->next;
@@ -20,16 +19,14 @@ bool sortedSingle::remove( int item )
         curr = curr->next;
     }
     if( curr == nullptr )
-    {
         return false;
-    }
-
     prev->next = curr->next;
     delete curr;
     return true;
 }
 
-void sortedSingle::clear( )
+template <typename TY>
+void sortedSingle<TY>::clear( )
 {
     node *temp = headptr;
     while( headptr != nullptr )

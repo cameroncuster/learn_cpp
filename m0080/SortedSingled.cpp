@@ -5,7 +5,8 @@
  *****************************************************************************/
 #include "sortedSingle.h"
 
-sortedSingle::sortedSingle( sortedSingle &l )
+template <typename TY>
+sortedSingle<TY>::sortedSingle( sortedSingle<TY> &l )
 {
     node *src = nullptr;
     node *dest = nullptr;

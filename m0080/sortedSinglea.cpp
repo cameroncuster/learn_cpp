@@ -1,20 +1,21 @@
 #include "sortedSingle.h"
 
-sortedSingle::sortedSingle( )
+template <typename TY>
+sortedSingle<TY>::sortedSingle( )
 {
     headptr = nullptr;
 }
 
-bool sortedSingle::empty( )
+template <typename TY>
+bool sortedSingle<TY>::empty( )
 {
     if( headptr == nullptr )
-    {
         return true;
-    }
     return false;
 }
 
-int sortedSingle::size( )
+template <typename TY>
+int sortedSingle<TY>::size( )
 {
     int count = 0;
     node *curr = headptr;
@@ -26,45 +27,40 @@ int sortedSingle::size( )
     return count;
 }
 
-bool sortedSingle::find( int item )
+template <typename TY>
+bool sortedSingle<TY>::find( TY item )
 {
     node *curr = headptr;
     if( empty( ) == true )
-    {
         return false;
-    }
     while( curr != nullptr )
     {
         if( curr->theItem == item )
-        {
             return true;
-        }
         curr = curr->next;
     }
     return false;
 }
 
-int sortedSingle::retrievePosition( int item )
+template <typename TY>
+int sortedSingle<TY>::retrievePosition( TY item )
 {
     int count = 1;
     node *curr = headptr;
     if( empty( ) == true )
-    {
         return 0;
-    }
     while( curr != nullptr )
     {
         if( curr->theItem == item )
-        {
             return count;
-        }
         curr = curr->next;
         count++;
     }
     return 0;
 }
 
-sortedSingle::~sortedSingle( )
+template <typename TY>
+sortedSingle<TY>::~sortedSingle( )
 {
     clear( );
 }

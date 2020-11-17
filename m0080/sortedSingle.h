@@ -16,6 +16,7 @@ using namespace std;
  *
  * @brief   A sorted singly linked list of integers.
  ****************************************************************************/
+template <class TY>
 class sortedSingle
 {
     private:
@@ -25,8 +26,7 @@ class sortedSingle
      */
     struct node
     {
-
-        int theItem;    /*!< the item */
+        TY theItem;    /*!< the item */
         node *next;     /*!< pointer to the remaining nodes in list */
     };
     node *headptr;      /*!< The location of the first node in the list */
@@ -34,32 +34,32 @@ class sortedSingle
     public:
 
     // do not write. under any circumstances do not write
-    sortedSingle( sortedSingle &l );
+    sortedSingle( sortedSingle<TY> &l );
 
     // file sortedSinglea.cpp
     sortedSingle( );
     ~sortedSingle( );
-    bool find( int item );
-    int retrievePosition( int item );
+    bool find( TY item );
+    int retrievePosition( TY item );
     int size( );
     bool empty( );
 
     // file sortedSingleb.cpp
-    bool insert( int item );
+    bool insert( TY item );
     void print( ostream &out, string seperator = ", " );
 
     // file sortedSinglec.cpp
-    bool remove( int item );
+    bool remove( TY item );
     void clear( );
 
-
-    class iterator : public std::iterator<std::forward_iterator_tag, int>
+    // template <class TY>
+    class iterator : public std::iterator<std::forward_iterator_tag, TY>
     {
         private:
         node *itptr;
 
         public:
-        iterator( node *ptr = nullptr );
+        iterator( node *ptr );
         iterator( const iterator &it );
         iterator &operator++( );
         iterator operator++( int );
