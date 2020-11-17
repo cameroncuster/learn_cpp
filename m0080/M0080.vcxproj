@@ -151,6 +151,7 @@
     <ClCompile Include="sortedSingleb.cpp" />
     <ClCompile Include="sortedSinglec.cpp" />
     <ClCompile Include="SortedSingled.cpp" />
+    <ClCompile Include="sortedSingleiterator.cpp" />
     <ClCompile Include="TestCases.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
