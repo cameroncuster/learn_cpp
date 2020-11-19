@@ -6,6 +6,8 @@
  ****************************************************************************/
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <iostream>
 using std::ostream;
 using std::string;
 using std::nothrow;
