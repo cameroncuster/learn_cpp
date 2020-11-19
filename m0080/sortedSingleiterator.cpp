@@ -40,13 +40,13 @@ sortedSingle<TY>::iterator sortedSingle<TY>::iterator::operator++( int )
 }
 
 template <typename TY>
-int &sortedSingle<TY>::iterator::operator*( ) const
+TY &sortedSingle<TY>::iterator::operator*( ) const
 {
     return itptr->theItem;
 }
 
 template <typename TY>
-int *sortedSingle<TY>::iterator::operator->( ) const
+TY *sortedSingle<TY>::iterator::operator->( ) const
 {
     return &( itptr->theItem );
 }
