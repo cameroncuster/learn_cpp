@@ -85,10 +85,10 @@ TEST_CASE( "ITERATOR" )
         REQUIRE( sout1.str( ) == "10 20 35 40 50 " );
     }
 }
-*/
+
 TEST_CASE( "default constructor" )
 {
-    sortedSingle<int> list1;
+    sortedSingle list1;
 
     SECTION( "empty" )
     {
@@ -117,8 +117,8 @@ TEST_CASE( "default constructor" )
 
 TEST_CASE( "copy constructor" )
 {
-    sortedSingle<int> list1;
-    sortedSingle<int> ecpy;
+    sortedSingle list1;
+    sortedSingle ecpy;
 
     ostringstream sout1;
     ostringstream sout1cpy;
@@ -134,7 +134,7 @@ TEST_CASE( "copy constructor" )
     list1.insert( 40 );
     list1.insert( 50 );
 
-    sortedSingle<int> list1cpy( list1 );
+    sortedSingle list1cpy( list1 );
     
     list1.print( sout1 );
     list1cpy.print( sout1cpy );
@@ -152,7 +152,7 @@ TEST_CASE( "copy constructor" )
 
     REQUIRE( sout1.str( ) != sout1cpy.str( ) );
 }
-/*
+
 TEST_CASE( "destructor - untestable" )
 {
     sortedSingle list1;
