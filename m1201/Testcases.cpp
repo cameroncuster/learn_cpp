@@ -1,5 +1,5 @@
-#include "sortedSingle.h"
 #include "..\\catch.hpp"
+#include "sortedSingle.h"
 using namespace std;
 
 TEST_CASE( "TEMPLATE CLASS - INTIGER LIST" )
@@ -33,4 +33,8 @@ TEST_CASE( "TEMPLATE CLASS - DOUBLE LIST" )
     doublelist.insert( 3.3 );
     doublelist.insert( 4.4 );
     doublelist.insert( 5.5 );
+}
+
+TEST_CASE( "TEMPLATE CLASS - CUSTOM ITERATORS" )
+{
 }
