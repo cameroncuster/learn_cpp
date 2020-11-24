@@ -13,17 +13,6 @@ TEST_CASE( "TEMPLATE CLASS - INTIGER LIST" )
     intlist.insert( 50 );
 }
 
-TEST_CASE( "TEMPLATE CLASS - STRING LIST" )
-{
-    sortedSingle<string> stringlist;
-
-    stringlist.insert( "a" );
-    stringlist.insert( "b" );
-    stringlist.insert( "c" );
-    stringlist.insert( "d" );
-    stringlist.insert( "e" );
-}
-
 TEST_CASE( "TEMPLATE CLASS - DOUBLE LIST" )
 {
     sortedSingle<double> doublelist;
@@ -35,6 +24,13 @@ TEST_CASE( "TEMPLATE CLASS - DOUBLE LIST" )
     doublelist.insert( 5.5 );
 }
 
-TEST_CASE( "TEMPLATE CLASS - CUSTOM ITERATORS" )
+TEST_CASE( "TEMPLATE CLASS - STRING LIST" )
 {
+    sortedSingle<string> stringlist;
+
+    stringlist.insert( "a" );
+    stringlist.insert( "b" );
+    stringlist.insert( "c" );
+    stringlist.insert( "d" );
+    stringlist.insert( "e" );
 }
