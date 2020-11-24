@@ -44,7 +44,7 @@ class sortedSingle
         node *itptr;
 
         public:
-        iterator( node *ptr );
+        iterator( node *ptr = nullptr );
         iterator( const iterator &it );
         iterator &operator++( );
         iterator operator++( int );
