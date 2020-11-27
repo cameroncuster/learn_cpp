@@ -8,7 +8,7 @@ TEST_CASE( "INTTEMPLATE" )
 
     ostringstream intsout;
 
-    // fill the list
+    // fill the list and print
     REQUIRE( intlist.insert( 10 ) == true );
     REQUIRE( intlist.insert( 20 ) == true );
     REQUIRE( intlist.insert( 30 ) == true );
@@ -61,7 +61,7 @@ TEST_CASE( "STRTEMPLATE" )
 
     ostringstream stringsout;
 
-    // fill the list
+    // fill the list and print
     REQUIRE( stringlist.insert( "a" ) == true );
     REQUIRE( stringlist.insert( "b" ) == true );
     REQUIRE( stringlist.insert( "c" ) == true );
