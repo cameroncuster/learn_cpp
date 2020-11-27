@@ -21,7 +21,7 @@ class sortedSingle
 
     public:
 
-    // copy constructor
+    // copy constructor for the linked list
     sortedSingle( sortedSingle<TY> &l );
 
     // default constructor and destructor
