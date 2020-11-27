@@ -38,22 +38,32 @@ class sortedSingle
     bool remove( TY item );
     void clear( );
 
+    // template iterator class inheriting the STL iterator publically
     class iterator : public std::iterator<std::forward_iterator_tag, TY>
     {
         private:
         node *itptr;
 
         public:
+        
+        // iterator constructors
         iterator( node *ptr = nullptr );
         iterator( const iterator &it );
+
+        // pre/post increment
         iterator &operator++( );
         iterator operator++( int );
 
+        // derefrence and derefrence to
         TY &operator*( ) const;
         TY *operator->( ) const;
+
+        // iterator comparitive
         bool operator==( const iterator &x ) const;
         bool operator!=( const iterator &x ) const;
     };
+
+    // locate the iterator to the beginning or end of the linked list
     iterator begin( );
     iterator end( );
 };

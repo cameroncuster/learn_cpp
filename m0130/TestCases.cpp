@@ -9,6 +9,7 @@ TEST_CASE( "INTITERATOR" )
 
     ostringstream sout1;
 
+    // fill the list and set the iterator to the beginning
     list1.insert( 10 );
     list1.insert( 30 );
     list1.insert( 20 );
@@ -17,6 +18,7 @@ TEST_CASE( "INTITERATOR" )
 
     it = list1.begin( );
 
+    // validate the pre_increment utilizing an output string stream
     SECTION( "PRE_INCREMENT" )
     {
         while( it != list1.end( ) )
@@ -29,7 +31,8 @@ TEST_CASE( "INTITERATOR" )
         REQUIRE( sout1.str( ) == "10, 20, 30, 40, 50" );
     }
 
-    SECTION( "PRE_INCREMENT" )
+    // validate the post_increment utilizing an output string stream
+    SECTION( "POST_INCREMENT" )
     {
         while( it != list1.end( ) )
         {
@@ -41,6 +44,7 @@ TEST_CASE( "INTITERATOR" )
         REQUIRE( sout1.str( ) == "10, 20, 30, 40, 50" );
     }
 
+    // validate the equality comparison operators ( == & != )
     SECTION( "EQUALITY&!" )
     {
         sortedSingle<int>::iterator it1 = list1.begin( );
@@ -52,6 +56,7 @@ TEST_CASE( "INTITERATOR" )
         REQUIRE( it2 != it3 );
     }
 
+    // validate the derefrence ( * )
     SECTION( "DEREFRENCE" )
     {
         it = list1.begin( );
@@ -62,6 +67,7 @@ TEST_CASE( "INTITERATOR" )
         REQUIRE( sout1.str( ) == "9 20 30 40 50 " );
     }
 
+    // validate the derefrence too - >
     SECTION( "DEREFRENCE_RETURN_VAL" )
     {
         int n;
@@ -71,6 +77,7 @@ TEST_CASE( "INTITERATOR" )
         REQUIRE( n == 10 );
     }
 
+    // validate the address returned of the value located at the iterator
     SECTION( "ADDRESS_OF_ITEM" )
     {
         it = list1.begin( );
@@ -91,6 +98,7 @@ TEST_CASE( "STRITERATOR" )
 
     ostringstream sout1;
 
+    // fill the list and set the iterator to the beginning
     list1.insert( "a" );
     list1.insert( "b" );
     list1.insert( "c" );
@@ -99,6 +107,7 @@ TEST_CASE( "STRITERATOR" )
 
     it = list1.begin( );
 
+    // validate the pre_increment utilizing an output string stream
     SECTION( "PRE_INCREMENT" )
     {
         while( it != list1.end( ) )
@@ -111,7 +120,8 @@ TEST_CASE( "STRITERATOR" )
         REQUIRE( sout1.str( ) == "a, b, c, d, e" );
     }
 
-    SECTION( "PRE_INCREMENT" )
+    // validate the post_increment utilizing an output string stream
+    SECTION( "POST_INCREMENT" )
     {
         while( it != list1.end( ) )
         {
@@ -123,6 +133,7 @@ TEST_CASE( "STRITERATOR" )
         REQUIRE( sout1.str( ) == "a, b, c, d, e" );
     }
 
+    // validate the equality comparison operators ( == & != )
     SECTION( "EQUALITY&!" )
     {
         sortedSingle<string>::iterator it1 = list1.begin( );
@@ -132,5 +143,39 @@ TEST_CASE( "STRITERATOR" )
         REQUIRE( it1 == it2 );
         REQUIRE( it1 != it3 );
         REQUIRE( it2 != it3 );
+    }
+
+    // validate the derefrence ( * )
+    SECTION( "DEREFRENCE" )
+    {
+        it = list1.begin( );
+        *it = "z";
+
+        for( it = list1.begin( ); it != list1.end( ); it++ )
+            sout1 << *it << ' ';
+        REQUIRE( sout1.str( ) == "z b c d e " );
+    }
+
+    // validate the derefrence too - >
+    SECTION( "DEREFRENCE_RETURN_VAL" )
+    {
+        string n;
+        n = *it;
+        REQUIRE( n == "a" );
+        n = *it++;
+        REQUIRE( n == "a" );
+    }
+
+    // validate the address returned of the value located at the iterator
+    SECTION( "ADDRESS_OF_ITEM" )
+    {
+        it = list1.begin( );
+        ++it;
+        it++;
+
+        *it = "z";
+        for( it = list1.begin( ); it != list1.end( ); ++it )
+            sout1 << *it << ' ';
+        REQUIRE( sout1.str( ) == "a b z d e " );
     }
 }
