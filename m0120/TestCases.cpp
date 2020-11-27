@@ -8,7 +8,7 @@ TEST_CASE( "INTTEMPLATE" )
 
     ostringstream intsout;
 
-    // fill the list and print
+    // fill the list and compare with the string stream
     REQUIRE( intlist.insert( 10 ) == true );
     REQUIRE( intlist.insert( 20 ) == true );
     REQUIRE( intlist.insert( 30 ) == true );
@@ -22,7 +22,7 @@ TEST_CASE( "INTTEMPLATE" )
         REQUIRE( intsout.str( ) == "10, 20, 30, 40, 50" );
     }
 
-    // find and retrieve the positions of some items
+    // find the individual items in the linked list
     REQUIRE( intlist.find( 00 ) == false );
     REQUIRE( intlist.find( 10 ) == true );
     REQUIRE( intlist.find( 20 ) == true );
@@ -31,6 +31,7 @@ TEST_CASE( "INTTEMPLATE" )
     REQUIRE( intlist.find( 50 ) == true );
     REQUIRE( intlist.find( 60 ) == false );
     
+    // retrieve the position of the individual items in the list
     REQUIRE( intlist.retrievePosition( 00 ) == 0 );
     REQUIRE( intlist.retrievePosition( 10 ) == 1 );
     REQUIRE( intlist.retrievePosition( 20 ) == 2 );
@@ -39,7 +40,7 @@ TEST_CASE( "INTTEMPLATE" )
     REQUIRE( intlist.retrievePosition( 50 ) == 5 );
     REQUIRE( intlist.retrievePosition( 60 ) == 0 );
 
-    // remove the items from the list and print
+    // remove the items from the list and compare with the string stream
     REQUIRE( intlist.remove( 00 ) == false );
     REQUIRE( intlist.remove( 10 ) == true );
     REQUIRE( intlist.remove( 50 ) == true );
@@ -61,7 +62,7 @@ TEST_CASE( "STRTEMPLATE" )
 
     ostringstream stringsout;
 
-    // fill the list and print
+    // fill the list and compare with the string stream
     REQUIRE( stringlist.insert( "a" ) == true );
     REQUIRE( stringlist.insert( "b" ) == true );
     REQUIRE( stringlist.insert( "c" ) == true );
@@ -74,7 +75,7 @@ TEST_CASE( "STRTEMPLATE" )
         REQUIRE( stringsout.str( ) == "a, b, c, d, e" );
     }
 
-    // find and retrieve the positions of some items
+    // find the individual items in the list
     REQUIRE( stringlist.find( "x" ) == false );
     REQUIRE( stringlist.find( "a" ) == true );
     REQUIRE( stringlist.find( "b" ) == true );
@@ -83,6 +84,7 @@ TEST_CASE( "STRTEMPLATE" )
     REQUIRE( stringlist.find( "e" ) == true );
     REQUIRE( stringlist.find( "y" ) == false );
     
+    // retrieve the position of the individual items in the list
     REQUIRE( stringlist.retrievePosition( "x" ) == 0 );
     REQUIRE( stringlist.retrievePosition( "a" ) == 1 );
     REQUIRE( stringlist.retrievePosition( "b" ) == 2 );
@@ -91,7 +93,7 @@ TEST_CASE( "STRTEMPLATE" )
     REQUIRE( stringlist.retrievePosition( "e" ) == 5 );
     REQUIRE( stringlist.retrievePosition( "y" ) == 0 );
 
-    // remove the items from the list and print
+    // remove the items from the list and compare with the string stream
     REQUIRE( stringlist.remove( "x" ) == false );
     REQUIRE( stringlist.remove( "a" ) == true );
     REQUIRE( stringlist.remove( "b" ) == true );
