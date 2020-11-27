@@ -46,7 +46,7 @@ class sortedSingle
 
         public:
         
-        // iterator constructors
+        // iterator constructor w/default
         iterator( node *ptr = nullptr );
         iterator( const iterator &it );
 
