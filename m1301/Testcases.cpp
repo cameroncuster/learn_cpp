@@ -2,7 +2,7 @@
 #include "sortedSingle.h"
 using namespace std;
 
-TEST_CASE( "ITERATOR" )
+TEST_CASE( "INTITERATOR" )
 {
     sortedSingle<int> list1;
     sortedSingle<int>::iterator it;
@@ -81,5 +81,56 @@ TEST_CASE( "ITERATOR" )
         for( it = list1.begin( ); it != list1.end( ); ++it )
             sout1 << *it << ' ';
         REQUIRE( sout1.str( ) == "10 20 35 40 50 " );
+    }
+}
+
+TEST_CASE( "STRITERATOR" )
+{
+    sortedSingle<string> list1;
+    sortedSingle<string>::iterator it;
+
+    ostringstream sout1;
+
+    list1.insert( "a" );
+    list1.insert( "b" );
+    list1.insert( "c" );
+    list1.insert( "d" );
+    list1.insert( "e" );
+
+    it = list1.begin( );
+
+    SECTION( "PRE_INCREMENT" )
+    {
+        while( it != list1.end( ) )
+        {
+            sout1 << *it;
+            ++it;
+            if( it != list1.end( ) )
+                sout1 << ", ";
+        }
+        REQUIRE( sout1.str( ) == "a, b, c, d, e" );
+    }
+
+    SECTION( "PRE_INCREMENT" )
+    {
+        while( it != list1.end( ) )
+        {
+            sout1 << *it;
+            it++;
+            if( it != list1.end( ) )
+                sout1 << ", ";
+        }
+        REQUIRE( sout1.str( ) == "a, b, c, d, e" );
+    }
+
+    SECTION( "EQUALITY&!" )
+    {
+        sortedSingle<string>::iterator it1 = list1.begin( );
+        sortedSingle<string>::iterator it2 = list1.begin( );
+        sortedSingle<string>::iterator it3 = list1.end( );
+
+        REQUIRE( it1 == it2 );
+        REQUIRE( it1 != it3 );
+        REQUIRE( it2 != it3 );
     }
 }
