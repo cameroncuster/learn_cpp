@@ -1,7 +1,6 @@
 #include <iostream>
-#include <string>
 #include <sstream>
-#include <iostream>
+#include <string>
 using std::ostream;
 using std::string;
 using std::nothrow;
