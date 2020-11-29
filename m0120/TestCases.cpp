@@ -58,53 +58,113 @@ TEST_CASE( "INTTEMPLATE" )
 
 TEST_CASE( "STRTEMPLATE" )
 {
-    sortedSingle<string> stringlist;
+    sortedSingle<string> strlist;
 
-    ostringstream stringsout;
+    ostringstream strsout;
 
     // fill the list and compare with the string stream
-    REQUIRE( stringlist.insert( "a" ) == true );
-    REQUIRE( stringlist.insert( "b" ) == true );
-    REQUIRE( stringlist.insert( "c" ) == true );
-    REQUIRE( stringlist.insert( "d" ) == true );
-    REQUIRE( stringlist.insert( "e" ) == true );
+    REQUIRE( strlist.insert( "a" ) == true );
+    REQUIRE( strlist.insert( "b" ) == true );
+    REQUIRE( strlist.insert( "c" ) == true );
+    REQUIRE( strlist.insert( "d" ) == true );
+    REQUIRE( strlist.insert( "e" ) == true );
 
     SECTION( "PRINT COMPARE" )
     {
-        stringlist.print( stringsout );
-        REQUIRE( stringsout.str( ) == "a, b, c, d, e" );
+        strlist.print( strsout );
+        REQUIRE( strsout.str( ) == "a, b, c, d, e" );
     }
 
     // find the individual items in the list
-    REQUIRE( stringlist.find( "x" ) == false );
-    REQUIRE( stringlist.find( "a" ) == true );
-    REQUIRE( stringlist.find( "b" ) == true );
-    REQUIRE( stringlist.find( "c" ) == true );
-    REQUIRE( stringlist.find( "d" ) == true );
-    REQUIRE( stringlist.find( "e" ) == true );
-    REQUIRE( stringlist.find( "y" ) == false );
+    REQUIRE( strlist.find( "x" ) == false );
+    REQUIRE( strlist.find( "a" ) == true );
+    REQUIRE( strlist.find( "b" ) == true );
+    REQUIRE( strlist.find( "c" ) == true );
+    REQUIRE( strlist.find( "d" ) == true );
+    REQUIRE( strlist.find( "e" ) == true );
+    REQUIRE( strlist.find( "y" ) == false );
     
     // retrieve the position of the individual items in the list
-    REQUIRE( stringlist.retrievePosition( "x" ) == 0 );
-    REQUIRE( stringlist.retrievePosition( "a" ) == 1 );
-    REQUIRE( stringlist.retrievePosition( "b" ) == 2 );
-    REQUIRE( stringlist.retrievePosition( "c" ) == 3 );
-    REQUIRE( stringlist.retrievePosition( "d" ) == 4 );
-    REQUIRE( stringlist.retrievePosition( "e" ) == 5 );
-    REQUIRE( stringlist.retrievePosition( "y" ) == 0 );
+    REQUIRE( strlist.retrievePosition( "x" ) == 0 );
+    REQUIRE( strlist.retrievePosition( "a" ) == 1 );
+    REQUIRE( strlist.retrievePosition( "b" ) == 2 );
+    REQUIRE( strlist.retrievePosition( "c" ) == 3 );
+    REQUIRE( strlist.retrievePosition( "d" ) == 4 );
+    REQUIRE( strlist.retrievePosition( "e" ) == 5 );
+    REQUIRE( strlist.retrievePosition( "y" ) == 0 );
 
     // remove the items from the list and compare with the string stream
-    REQUIRE( stringlist.remove( "x" ) == false );
-    REQUIRE( stringlist.remove( "a" ) == true );
-    REQUIRE( stringlist.remove( "b" ) == true );
-    REQUIRE( stringlist.remove( "c" ) == true );
-    REQUIRE( stringlist.remove( "d" ) == true );
-    REQUIRE( stringlist.remove( "e" ) == true );
-    REQUIRE( stringlist.remove( "y" ) == false );
+    REQUIRE( strlist.remove( "x" ) == false );
+    REQUIRE( strlist.remove( "a" ) == true );
+    REQUIRE( strlist.remove( "b" ) == true );
+    REQUIRE( strlist.remove( "c" ) == true );
+    REQUIRE( strlist.remove( "d" ) == true );
+    REQUIRE( strlist.remove( "e" ) == true );
+    REQUIRE( strlist.remove( "y" ) == false );
 
     SECTION( "PRINT COMPARE" )
     {
-        stringlist.print( stringsout );
-        REQUIRE( stringsout.str( ) == "" );
+        strlist.print( strsout );
+        REQUIRE( strsout.str( ) == "" );
     }
+}
+
+TEST_CASE( "COPY CONSTRUCTOR<INT> _ EXTRA POINT" )
+{
+    sortedSingle<int> intlist;
+
+    stringstream intsout;
+    stringstream intsoutcpy;
+
+    // empty lists
+    SECTION( "EMPTY LISTS" )
+    {
+        sortedSingle<int> intlistcpy( intlist );
+        intlist.print( intsout );
+        intlistcpy.print( intsoutcpy );
+        REQUIRE( intsoutcpy.str( ) == "" );
+        REQUIRE( intsout.str( ) == intsoutcpy.str( ) );
+    }
+
+    // fill the base list with values
+    REQUIRE( intlist.insert( 10 ) == true );
+    REQUIRE( intlist.insert( 20 ) == true );
+    REQUIRE( intlist.insert( 30 ) == true );
+    REQUIRE( intlist.insert( 40 ) == true );
+    REQUIRE( intlist.insert( 50 ) == true );
+
+    // copy the base list
+    sortedSingle<int> intlistcpy( intlist );
+
+    // ensure the lists are complete copies of one another
+    SECTION( "COPIED LIST OF VALUES" )
+    {
+        intlist.print( intsout );
+        intlistcpy.print( intsoutcpy );
+        REQUIRE( intsoutcpy.str( ) == "10, 20, 30, 40, 50" );
+        REQUIRE( intsout.str( ) == intsoutcpy.str( ) );
+    }
+
+    // remove from the copy
+    CHECK( intlistcpy.remove( 10 ) == true );
+    CHECK( intlistcpy.remove( 50 ) == true );
+    CHECK( intlistcpy.remove( 30 ) == true );
+
+    // ensure the modified copies are not equal
+    SECTION( "MODIFIED COPIES" )
+    {
+        intlist.print( intsout );
+        intlistcpy.print( intsoutcpy );
+        REQUIRE( intsout.str( ) == "10, 20, 30, 40, 50" );
+        REQUIRE( intsoutcpy.str( ) == "20, 40" );
+        REQUIRE( intsout.str( ) != intsoutcpy.str( ) );
+    }
+}
+
+TEST_CASE( "COPY CONSTRUCTOR<STR> _ EXTRA POINT" )
+{
+    sortedSingle<string> strlist;
+
+    stringstream strsout;
+    stringstream strsoutcpy;
 }
