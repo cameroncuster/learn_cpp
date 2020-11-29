@@ -167,4 +167,48 @@ TEST_CASE( "COPY CONSTRUCTOR<STR> _ EXTRA POINT" )
 
     stringstream strsout;
     stringstream strsoutcpy;
+
+    // empty lists
+    SECTION( "EMPTY LISTS" )
+    {
+        sortedSingle<string> strlistcpy( strlist );
+        strlist.print( strsout );
+        strlistcpy.print( strsoutcpy );
+        REQUIRE( strsoutcpy.str( ) == "" );
+        REQUIRE( strsout.str( ) == strsoutcpy.str( ) );
+    }
+
+    // fill the base list with values
+    REQUIRE( strlist.insert( "a" ) == true );
+    REQUIRE( strlist.insert( "b" ) == true );
+    REQUIRE( strlist.insert( "c" ) == true );
+    REQUIRE( strlist.insert( "d" ) == true );
+    REQUIRE( strlist.insert( "e" ) == true );
+
+    // copy the base list
+    sortedSingle<string> strlistcpy( strlist );
+
+    // ensure the lists are complete copies of one another
+    SECTION( "COPIED LIST OF VALUES" )
+    {
+        strlist.print( strsout );
+        strlistcpy.print( strsoutcpy );
+        REQUIRE( strsoutcpy.str( ) == "a, b, c, d, e" );
+        REQUIRE( strsout.str( ) == strsoutcpy.str( ) );
+    }
+
+    // remove from the copy
+    CHECK( strlistcpy.remove( "a" ) == true );
+    CHECK( strlistcpy.remove( "e" ) == true );
+    CHECK( strlistcpy.remove( "c" ) == true );
+
+    // ensure the modified copies are not equal and verify their contents
+    SECTION( "MODIFIED COPIES" )
+    {
+        strlist.print( strsout );
+        strlistcpy.print( strsoutcpy );
+        REQUIRE( strsout.str( ) == "a, b, c, d, e" );
+        REQUIRE( strsoutcpy.str( ) == "b, d" );
+        REQUIRE( strsout.str( ) != strsoutcpy.str( ) );
+    }
 }
