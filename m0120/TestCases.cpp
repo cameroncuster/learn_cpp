@@ -150,7 +150,7 @@ TEST_CASE( "COPY CONSTRUCTOR<INT> _ EXTRA POINT" )
     CHECK( intlistcpy.remove( 50 ) == true );
     CHECK( intlistcpy.remove( 30 ) == true );
 
-    // ensure the modified copies are not equal
+    // ensure the modified copies are not equal and verify their contents
     SECTION( "MODIFIED COPIES" )
     {
         intlist.print( intsout );
