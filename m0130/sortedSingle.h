@@ -27,7 +27,7 @@ class sortedSingle
     sortedSingle( );
     ~sortedSingle( );
 
-    // foundational linked list member functions
+    // foundational linked list membership functions
     bool find( TY item );
     int retrievePosition( TY item );
     int size( );
