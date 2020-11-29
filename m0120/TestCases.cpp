@@ -127,11 +127,11 @@ TEST_CASE( "COPY CONSTRUCTOR<INT> _ EXTRA POINT" )
     }
 
     // fill the base list with values
-    REQUIRE( intlist.insert( 10 ) == true );
-    REQUIRE( intlist.insert( 20 ) == true );
-    REQUIRE( intlist.insert( 30 ) == true );
-    REQUIRE( intlist.insert( 40 ) == true );
-    REQUIRE( intlist.insert( 50 ) == true );
+    CHECK( intlist.insert( 10 ) == true );
+    CHECK( intlist.insert( 20 ) == true );
+    CHECK( intlist.insert( 30 ) == true );
+    CHECK( intlist.insert( 40 ) == true );
+    CHECK( intlist.insert( 50 ) == true );
 
     // copy the base list
     sortedSingle<int> intlistcpy( intlist );
@@ -179,11 +179,11 @@ TEST_CASE( "COPY CONSTRUCTOR<STR> _ EXTRA POINT" )
     }
 
     // fill the base list with values
-    REQUIRE( strlist.insert( "a" ) == true );
-    REQUIRE( strlist.insert( "b" ) == true );
-    REQUIRE( strlist.insert( "c" ) == true );
-    REQUIRE( strlist.insert( "d" ) == true );
-    REQUIRE( strlist.insert( "e" ) == true );
+    CHECK( strlist.insert( "a" ) == true );
+    CHECK( strlist.insert( "b" ) == true );
+    CHECK( strlist.insert( "c" ) == true );
+    CHECK( strlist.insert( "d" ) == true );
+    CHECK( strlist.insert( "e" ) == true );
 
     // copy the base list
     sortedSingle<string> strlistcpy( strlist );
